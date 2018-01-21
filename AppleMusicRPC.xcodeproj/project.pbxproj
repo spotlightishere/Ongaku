@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		42024DE820145BFA00AEBA10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DE720145BFA00AEBA10 /* AppDelegate.swift */; };
+		42024DEA20145BFA00AEBA10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DE920145BFA00AEBA10 /* ViewController.swift */; };
+		42024DEC20145BFA00AEBA10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42024DEB20145BFA00AEBA10 /* Assets.xcassets */; };
+		42024DEF20145BFA00AEBA10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42024DED20145BFA00AEBA10 /* Main.storyboard */; };
+		42024DFA20145BFA00AEBA10 /* AppleMusicRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DF920145BFA00AEBA10 /* AppleMusicRPCTests.swift */; };
+		42024E0520145BFA00AEBA10 /* AppleMusicRPCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024E0420145BFA00AEBA10 /* AppleMusicRPCUITests.swift */; };
+		422EEBCF20146AC20028F32C /* libdiscord-rpc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 422EEBCE20146AC20028F32C /* libdiscord-rpc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		422EEBD220146AF70028F32C /* libdiscord-rpc-link.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 422EEBD120146AF70028F32C /* libdiscord-rpc-link.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		42024DF620145BFA00AEBA10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42024DDC20145BF900AEBA10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42024DE320145BF900AEBA10;
+			remoteInfo = AppleMusicRPC;
+		};
+		42024E0120145BFA00AEBA10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42024DDC20145BF900AEBA10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42024DE320145BF900AEBA10;
+			remoteInfo = AppleMusicRPC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		422EEBC520146A340028F32C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				422EEBCF20146AC20028F32C /* libdiscord-rpc.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		42024DE420145BFA00AEBA10 /* AppleMusicRPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleMusicRPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42024DE720145BFA00AEBA10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		42024DE920145BFA00AEBA10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		42024DEB20145BFA00AEBA10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		42024DEE20145BFA00AEBA10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		42024DF020145BFA00AEBA10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42024DF520145BFA00AEBA10 /* AppleMusicRPCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppleMusicRPCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		42024DF920145BFA00AEBA10 /* AppleMusicRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicRPCTests.swift; sourceTree = "<group>"; };
+		42024DFB20145BFA00AEBA10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42024E0020145BFA00AEBA10 /* AppleMusicRPCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppleMusicRPCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		42024E0420145BFA00AEBA10 /* AppleMusicRPCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicRPCUITests.swift; sourceTree = "<group>"; };
+		42024E0620145BFA00AEBA10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42024E1320145C3600AEBA10 /* discord-rpc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "discord-rpc.h"; sourceTree = "<group>"; };
+		42024E1820145DCC00AEBA10 /* AppleMusicRPC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppleMusicRPC-Bridging-Header.h"; sourceTree = "<group>"; };
+		422EEBC3201469ED0028F32C /* libdiscord-rpc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libdiscord-rpc.dylib"; path = "../libdiscord-rpc.dylib"; sourceTree = "<group>"; };
+		422EEBCE20146AC20028F32C /* libdiscord-rpc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libdiscord-rpc.dylib"; sourceTree = "<group>"; };
+		422EEBD020146ADD0028F32C /* libdiscord-rpc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libdiscord-rpc.dylib"; sourceTree = "<group>"; };
+		422EEBD120146AF70028F32C /* libdiscord-rpc-link.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libdiscord-rpc-link.dylib"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		42024DE120145BF900AEBA10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				422EEBD220146AF70028F32C /* libdiscord-rpc-link.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42024DF220145BFA00AEBA10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42024DFD20145BFA00AEBA10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		42024DDB20145BF900AEBA10 = {
+			isa = PBXGroup;
+			children = (
+				422EEBD020146ADD0028F32C /* libdiscord-rpc.dylib */,
+				422EEBCE20146AC20028F32C /* libdiscord-rpc.dylib */,
+				42024DE620145BFA00AEBA10 /* AppleMusicRPC */,
+				42024DF820145BFA00AEBA10 /* AppleMusicRPCTests */,
+				42024E0320145BFA00AEBA10 /* AppleMusicRPCUITests */,
+				42024DE520145BFA00AEBA10 /* Products */,
+				422EEBC2201469ED0028F32C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		42024DE520145BFA00AEBA10 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42024DE420145BFA00AEBA10 /* AppleMusicRPC.app */,
+				42024DF520145BFA00AEBA10 /* AppleMusicRPCTests.xctest */,
+				42024E0020145BFA00AEBA10 /* AppleMusicRPCUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		42024DE620145BFA00AEBA10 /* AppleMusicRPC */ = {
+			isa = PBXGroup;
+			children = (
+				42024E1320145C3600AEBA10 /* discord-rpc.h */,
+				42024DE720145BFA00AEBA10 /* AppDelegate.swift */,
+				42024DE920145BFA00AEBA10 /* ViewController.swift */,
+				42024DEB20145BFA00AEBA10 /* Assets.xcassets */,
+				42024DED20145BFA00AEBA10 /* Main.storyboard */,
+				42024DF020145BFA00AEBA10 /* Info.plist */,
+				42024E1820145DCC00AEBA10 /* AppleMusicRPC-Bridging-Header.h */,
+			);
+			path = AppleMusicRPC;
+			sourceTree = "<group>";
+		};
+		42024DF820145BFA00AEBA10 /* AppleMusicRPCTests */ = {
+			isa = PBXGroup;
+			children = (
+				42024DF920145BFA00AEBA10 /* AppleMusicRPCTests.swift */,
+				42024DFB20145BFA00AEBA10 /* Info.plist */,
+			);
+			path = AppleMusicRPCTests;
+			sourceTree = "<group>";
+		};
+		42024E0320145BFA00AEBA10 /* AppleMusicRPCUITests */ = {
+			isa = PBXGroup;
+			children = (
+				42024E0420145BFA00AEBA10 /* AppleMusicRPCUITests.swift */,
+				42024E0620145BFA00AEBA10 /* Info.plist */,
+			);
+			path = AppleMusicRPCUITests;
+			sourceTree = "<group>";
+		};
+		422EEBC2201469ED0028F32C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				422EEBD120146AF70028F32C /* libdiscord-rpc-link.dylib */,
+				422EEBC3201469ED0028F32C /* libdiscord-rpc.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42024DE320145BF900AEBA10 /* AppleMusicRPC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42024E0920145BFA00AEBA10 /* Build configuration list for PBXNativeTarget "AppleMusicRPC" */;
+			buildPhases = (
+				42024DE020145BF900AEBA10 /* Sources */,
+				42024DE120145BF900AEBA10 /* Frameworks */,
+				42024DE220145BF900AEBA10 /* Resources */,
+				422EEBC520146A340028F32C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AppleMusicRPC;
+			productName = AppleMusicRPC;
+			productReference = 42024DE420145BFA00AEBA10 /* AppleMusicRPC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		42024DF420145BFA00AEBA10 /* AppleMusicRPCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42024E0C20145BFA00AEBA10 /* Build configuration list for PBXNativeTarget "AppleMusicRPCTests" */;
+			buildPhases = (
+				42024DF120145BFA00AEBA10 /* Sources */,
+				42024DF220145BFA00AEBA10 /* Frameworks */,
+				42024DF320145BFA00AEBA10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42024DF720145BFA00AEBA10 /* PBXTargetDependency */,
+			);
+			name = AppleMusicRPCTests;
+			productName = AppleMusicRPCTests;
+			productReference = 42024DF520145BFA00AEBA10 /* AppleMusicRPCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		42024DFF20145BFA00AEBA10 /* AppleMusicRPCUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42024E0F20145BFA00AEBA10 /* Build configuration list for PBXNativeTarget "AppleMusicRPCUITests" */;
+			buildPhases = (
+				42024DFC20145BFA00AEBA10 /* Sources */,
+				42024DFD20145BFA00AEBA10 /* Frameworks */,
+				42024DFE20145BFA00AEBA10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42024E0220145BFA00AEBA10 /* PBXTargetDependency */,
+			);
+			name = AppleMusicRPCUITests;
+			productName = AppleMusicRPCUITests;
+			productReference = 42024E0020145BFA00AEBA10 /* AppleMusicRPCUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		42024DDC20145BF900AEBA10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Spotlight IsHere";
+				TargetAttributes = {
+					42024DE320145BF900AEBA10 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 2F5AW9EGL6;
+						ProvisioningStyle = Automatic;
+					};
+					42024DF420145BFA00AEBA10 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 2F5AW9EGL6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 42024DE320145BF900AEBA10;
+					};
+					42024DFF20145BFA00AEBA10 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 2F5AW9EGL6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 42024DE320145BF900AEBA10;
+					};
+				};
+			};
+			buildConfigurationList = 42024DDF20145BF900AEBA10 /* Build configuration list for PBXProject "AppleMusicRPC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 42024DDB20145BF900AEBA10;
+			productRefGroup = 42024DE520145BFA00AEBA10 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42024DE320145BF900AEBA10 /* AppleMusicRPC */,
+				42024DF420145BFA00AEBA10 /* AppleMusicRPCTests */,
+				42024DFF20145BFA00AEBA10 /* AppleMusicRPCUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42024DE220145BF900AEBA10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42024DEC20145BFA00AEBA10 /* Assets.xcassets in Resources */,
+				42024DEF20145BFA00AEBA10 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42024DF320145BFA00AEBA10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42024DFE20145BFA00AEBA10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42024DE020145BF900AEBA10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42024DEA20145BFA00AEBA10 /* ViewController.swift in Sources */,
+				42024DE820145BFA00AEBA10 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42024DF120145BFA00AEBA10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42024DFA20145BFA00AEBA10 /* AppleMusicRPCTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42024DFC20145BFA00AEBA10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42024E0520145BFA00AEBA10 /* AppleMusicRPCUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42024DF720145BFA00AEBA10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42024DE320145BF900AEBA10 /* AppleMusicRPC */;
+			targetProxy = 42024DF620145BFA00AEBA10 /* PBXContainerItemProxy */;
+		};
+		42024E0220145BFA00AEBA10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42024DE320145BF900AEBA10 /* AppleMusicRPC */;
+			targetProxy = 42024E0120145BFA00AEBA10 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		42024DED20145BFA00AEBA10 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42024DEE20145BFA00AEBA10 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		42024E0720145BFA00AEBA10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		42024E0820145BFA00AEBA10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		42024E0A20145BFA00AEBA10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				INFOPLIST_FILE = AppleMusicRPC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.AppleMusicRPC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AppleMusicRPC/AppleMusicRPC-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		42024E0B20145BFA00AEBA10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				INFOPLIST_FILE = AppleMusicRPC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.AppleMusicRPC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AppleMusicRPC/AppleMusicRPC-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		42024E0D20145BFA00AEBA10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				INFOPLIST_FILE = AppleMusicRPCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.AppleMusicRPCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppleMusicRPC.app/Contents/MacOS/AppleMusicRPC";
+			};
+			name = Debug;
+		};
+		42024E0E20145BFA00AEBA10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				INFOPLIST_FILE = AppleMusicRPCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.AppleMusicRPCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppleMusicRPC.app/Contents/MacOS/AppleMusicRPC";
+			};
+			name = Release;
+		};
+		42024E1020145BFA00AEBA10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				INFOPLIST_FILE = AppleMusicRPCUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.AppleMusicRPCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = AppleMusicRPC;
+			};
+			name = Debug;
+		};
+		42024E1120145BFA00AEBA10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				INFOPLIST_FILE = AppleMusicRPCUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.AppleMusicRPCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = AppleMusicRPC;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		42024DDF20145BF900AEBA10 /* Build configuration list for PBXProject "AppleMusicRPC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42024E0720145BFA00AEBA10 /* Debug */,
+				42024E0820145BFA00AEBA10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42024E0920145BFA00AEBA10 /* Build configuration list for PBXNativeTarget "AppleMusicRPC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42024E0A20145BFA00AEBA10 /* Debug */,
+				42024E0B20145BFA00AEBA10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42024E0C20145BFA00AEBA10 /* Build configuration list for PBXNativeTarget "AppleMusicRPCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42024E0D20145BFA00AEBA10 /* Debug */,
+				42024E0E20145BFA00AEBA10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42024E0F20145BFA00AEBA10 /* Build configuration list for PBXNativeTarget "AppleMusicRPCUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42024E1020145BFA00AEBA10 /* Debug */,
+				42024E1120145BFA00AEBA10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 42024DDC20145BF900AEBA10 /* Project object */;
+}

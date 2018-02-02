@@ -51,6 +51,8 @@ class ViewController: NSViewController {
     func updateEmbed(sender: Any?) {
         var details : String
         var state : String
+        presence.startTimestamp = 0
+        presence.endTimestamp = 0
         
         
         let itunes: AnyObject = SBApplication(bundleIdentifier: "com.apple.iTunes")!

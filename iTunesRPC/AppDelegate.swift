@@ -10,17 +10,20 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
-
+    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        statusItem.image = NSImage(named: "status_icon")
+        statusItem.action = #selector(quitApp)
     }
 
+    func quitApp(sender: Any?) {
+        NSApplication.shared().terminate(sender)
+    }
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
 
 }
-

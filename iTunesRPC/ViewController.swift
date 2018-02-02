@@ -11,11 +11,19 @@ import ScriptingBridge
 
 // Adapted from
 // https://gist.github.com/pvieito/3aee709b97602bfc44961df575e2b696
+@objc enum iTunesEPlS: NSInteger {
+    case iTunesEPlSStopped = 0x6b505353
+    case iTunesEPlSPlaying = 0x6b505350
+    case iTunesEPlSPaused = 0x6b505370
+    // others omitted
+}
+
 @objc protocol iTunesTrack {
     @objc optional var album: NSString {get}
     @objc optional var artist: NSString {get}
     @objc optional var duration: CDouble {get}
     @objc optional var name: NSString {get}
+    @objc optional var playerState: iTunesEPlS {get}
 }
 
 @objc protocol iTunesApplication {
@@ -25,6 +33,7 @@ import ScriptingBridge
 
 class ViewController: NSViewController {
     
+    var presence : DiscordRichPresence = DiscordRichPresence()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +45,10 @@ class ViewController: NSViewController {
         
         // Show rich presence.
         Discord_Initialize(appIdUnsafePointer, nil, 1, nil)
-        var presence : DiscordRichPresence = DiscordRichPresence()
+        Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(updateEmbed), userInfo: nil, repeats: true)
+    }
+    
+    func updateEmbed(sender: Any?) {
         var details : String
         var state : String
         
@@ -44,21 +56,34 @@ class ViewController: NSViewController {
         let itunes: AnyObject = SBApplication(bundleIdentifier: "com.apple.iTunes")!
         let track = itunes.currentTrack
         if (track != nil) {
-            let sureTrack = track!
-            details = "\(sureTrack.name!) - \(sureTrack.artist!)"
-            state = "\(sureTrack.album!)"
+            // Something's doing something, player can't be nil.. right?
+            let playerState = itunes.playerState!
             
-            // The following needs to be in milliseconds.
-            let trackDuration = Double(round(sureTrack.duration!))
-            let trackPosition = Double(round(itunes.playerPosition!))
-            let currentTimestamp = Double(NSDate().timeIntervalSince1970)
-            let trackRemaining = trackDuration - trackPosition
-            
-            // Go back (position amount)
-            presence.startTimestamp = Int64(Double(currentTimestamp - trackPosition))
-            // Add time remaining
-            presence.endTimestamp = Int64(Double(currentTimestamp + trackRemaining))
+            // Something's marked as playing, time to see..
+            if (playerState == iTunesEPlS.iTunesEPlSPlaying) {
+                let sureTrack = track!
+                details = "\(sureTrack.name!) - \(sureTrack.artist!)"
+                state = "\(sureTrack.album!)"
+                
+                // The following needs to be in milliseconds.
+                let trackDuration = Double(round(sureTrack.duration!))
+                let trackPosition = Double(round(itunes.playerPosition!))
+                let currentTimestamp = Double(NSDate().timeIntervalSince1970)
+                let trackRemaining = trackDuration - trackPosition
+                
+                // Go back (position amount)
+                presence.startTimestamp = Int64(Double(currentTimestamp - trackPosition))
+                // Add time remaining
+                presence.endTimestamp = Int64(Double(currentTimestamp + trackRemaining))
+            } else if (playerState == iTunesEPlS.iTunesEPlSPaused) {
+                details = "Paused."
+                state = "Holding your spot in the beat."
+            } else {
+                details = "Something unknown happened."
+                state = "Maybe iTunes got some new playing states? :/"
+            }
         } else {
+            // We're in the stopped state.
             details = "Nothing's playing."
             state = "(why are you looking at my status anyway?)"
         }

@@ -45,6 +45,8 @@ class ViewController: NSViewController {
         
         // Show rich presence.
         Discord_Initialize(appIdUnsafePointer, nil, 1, nil)
+        // Close window immediately.
+        self.view.window?.close()
         Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(updateEmbed), userInfo: nil, repeats: true)
     }
     
@@ -80,9 +82,12 @@ class ViewController: NSViewController {
             } else if (playerState == iTunesEPlS.iTunesEPlSPaused) {
                 details = "Paused."
                 state = "Holding your spot in the beat."
+            } else if (playerState == iTunesEPlS.iTunesEPlSStopped) {
+                details = "iTunes is stopped."
+                state = "Nothing's happening."
             } else {
-                details = "Something unknown happened."
-                state = "Maybe iTunes got some new playing states? :/"
+                details = "iTunes is most likely closed."
+                state = "If so, please quit this app. If not, please file a bug."
             }
         } else {
             // We're in the stopped state.

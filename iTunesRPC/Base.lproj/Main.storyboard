@@ -700,7 +700,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="rVg-3t-n8B">
                                     <font key="font" metaFont="system"/>
-                                    <string key="title">hello, my apologies but this app requires a window for discord to notice us. you're welcome to close it, we just have to have had a window</string>
+                                    <string key="title">hello, my apologies but this app requires a window for discord to notice us. you're welcome to close it, we just have to have had a window
+
+also should've probably closed itself</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>

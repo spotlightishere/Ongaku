@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  AppleMusicRPC
+//  iTunesRPC
 //
 //  Created by Spotlight IsHere on 1/20/18.
 //  Copyright © 2018 Spotlight IsHere. All rights reserved.

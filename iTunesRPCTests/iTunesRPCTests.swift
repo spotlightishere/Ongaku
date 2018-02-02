@@ -1,15 +1,15 @@
 //
-//  AppleMusicRPCTests.swift
-//  AppleMusicRPCTests
+//  iTunesRPCTests.swift
+//  iTunesRPCTests
 //
 //  Created by Spotlight IsHere on 1/20/18.
 //  Copyright © 2018 Spotlight IsHere. All rights reserved.
 //
 
 import XCTest
-@testable import AppleMusicRPC
+@testable import iTunesRPC
 
-class AppleMusicRPCTests: XCTestCase {
+class iTunesRPCTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

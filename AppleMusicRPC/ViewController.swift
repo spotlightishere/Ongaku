@@ -49,13 +49,15 @@ class ViewController: NSViewController {
             state = "\(sureTrack.album!)"
             
             // The following needs to be in milliseconds.
-//            let duration = Int(round(sureTrack.duration!))
-//            let currentPosition = Int(round(itunes.playerPosition!))
-//            let currentTimestamp = Int(NSDate().timeIntervalSince1970)
-//            let current = duration - currentPosition
-//            
-//            presence.startTimestamp = Int64(currentTimestamp - current)
-//            presence.endTimestamp = Int64(currentTimestamp + (duration - current))
+            let trackDuration = Double(round(sureTrack.duration!))
+            let trackPosition = Double(round(itunes.playerPosition!))
+            let currentTimestamp = Double(NSDate().timeIntervalSince1970)
+            let trackRemaining = trackDuration - trackPosition
+            
+            // Go back (position amount)
+            presence.startTimestamp = Int64(Double(currentTimestamp - trackPosition))
+            // Add time remaining
+            presence.endTimestamp = Int64(Double(currentTimestamp + trackRemaining))
         } else {
             details = "Nothing's playing."
             state = "(why are you looking at my status anyway?)"

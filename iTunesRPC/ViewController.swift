@@ -62,8 +62,8 @@ class ViewController: NSViewController {
             // Something's marked as playing, time to see..
             if (playerState == iTunesEPlS.iTunesEPlSPlaying) {
                 let sureTrack = track!
-                details = "\(sureTrack.name!) - \(sureTrack.artist!)"
-                state = "\(sureTrack.album!)"
+                details = "\(sureTrack.name!)"
+                state = "\(sureTrack.album!) - \(sureTrack.artist!)"
                 
                 // The following needs to be in milliseconds.
                 let trackDuration = Double(round(sureTrack.duration!))

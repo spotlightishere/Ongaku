@@ -13,8 +13,6 @@
 		42024DEF20145BFA00AEBA10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42024DED20145BFA00AEBA10 /* Main.storyboard */; };
 		42024DFA20145BFA00AEBA10 /* iTunesRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DF920145BFA00AEBA10 /* iTunesRPCTests.swift */; };
 		42024E0520145BFA00AEBA10 /* iTunesRPCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024E0420145BFA00AEBA10 /* iTunesRPCUITests.swift */; };
-		422EEBCF20146AC20028F32C /* libdiscord-rpc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 422EEBCE20146AC20028F32C /* libdiscord-rpc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		422EEBD220146AF70028F32C /* libdiscord-rpc-link.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 422EEBD120146AF70028F32C /* libdiscord-rpc-link.dylib */; };
 		678422FA65E75766BB624718 /* Pods_iTunesRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D01F317DE02F06802E9ACE5 /* Pods_iTunesRPC.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +40,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				422EEBCF20146AC20028F32C /* libdiscord-rpc.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,10 +60,7 @@
 		42024E0420145BFA00AEBA10 /* iTunesRPCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesRPCUITests.swift; sourceTree = "<group>"; };
 		42024E0620145BFA00AEBA10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42024E1320145C3600AEBA10 /* discord-rpc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "discord-rpc.h"; sourceTree = "<group>"; };
-		42024E1820145DCC00AEBA10 /* iTunesRPC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iTunesRPC-Bridging-Header.h"; sourceTree = "<group>"; };
 		422EEBC3201469ED0028F32C /* libdiscord-rpc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libdiscord-rpc.dylib"; path = "../libdiscord-rpc.dylib"; sourceTree = "<group>"; };
-		422EEBCE20146AC20028F32C /* libdiscord-rpc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libdiscord-rpc.dylib"; sourceTree = "<group>"; };
-		422EEBD020146ADD0028F32C /* libdiscord-rpc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libdiscord-rpc.dylib"; sourceTree = "<group>"; };
 		422EEBD120146AF70028F32C /* libdiscord-rpc-link.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libdiscord-rpc-link.dylib"; sourceTree = "<group>"; };
 		7D01F317DE02F06802E9ACE5 /* Pods_iTunesRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA99E90A474F7FC0EB2A99E /* Pods-iTunesRPC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesRPC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesRPC/Pods-iTunesRPC.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				422EEBD220146AF70028F32C /* libdiscord-rpc-link.dylib in Frameworks */,
 				678422FA65E75766BB624718 /* Pods_iTunesRPC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,8 +95,6 @@
 		42024DDB20145BF900AEBA10 = {
 			isa = PBXGroup;
 			children = (
-				422EEBD020146ADD0028F32C /* libdiscord-rpc.dylib */,
-				422EEBCE20146AC20028F32C /* libdiscord-rpc.dylib */,
 				42024DE620145BFA00AEBA10 /* iTunesRPC */,
 				42024DF820145BFA00AEBA10 /* iTunesRPCTests */,
 				42024E0320145BFA00AEBA10 /* iTunesRPCUITests */,
@@ -132,7 +123,6 @@
 				42024DEB20145BFA00AEBA10 /* Assets.xcassets */,
 				42024DED20145BFA00AEBA10 /* Main.storyboard */,
 				42024DF020145BFA00AEBA10 /* Info.plist */,
-				42024E1820145DCC00AEBA10 /* iTunesRPC-Bridging-Header.h */,
 			);
 			path = iTunesRPC;
 			sourceTree = "<group>";

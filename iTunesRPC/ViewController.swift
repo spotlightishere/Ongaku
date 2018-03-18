@@ -34,7 +34,6 @@ import Foundation
 }
 
 class ViewController: NSViewController {
-    
     // This is the iTunesRPC app ID.
     // You're welcome to change as you want.
     let rpc = SwordRPC(appId: "402370117901484042")
@@ -43,21 +42,26 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         
         // Callback for when RPC connects.
-        rpc.onConnect { (rpc) in
-            Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(self.updateEmbed), userInfo: nil, repeats: true)
-            
+        rpc.onConnect { (_) in
             var presence = RichPresence()
             presence.details = "Loading."
             presence.state = "Getting details from iTunes..."
-            
-            rpc.setPresence(presence)
+            self.rpc.setPresence(presence)
+            print("Connected to Discord.")
         }
+        
+        // This probably could be a race condition.
+        // Let's hope it connects in under 15 seconds.
+        Timer.scheduledTimer(withTimeInterval: 15.0, repeats: true, block: { (_) in
+            print("Hi from timer.")
+            self.updateEmbed(sender: self)
+        })
         rpc.connect()
     }
     
-    @objc func updateEmbed(sender: Any?) {
+    func updateEmbed(sender: Any?) {
         var presence = RichPresence()
-        
+
         let itunes: AnyObject = SBApplication(bundleIdentifier: "com.apple.iTunes")!
         let track = itunes.currentTrack
         if (track != nil) {

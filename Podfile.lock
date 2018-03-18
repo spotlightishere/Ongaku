@@ -1,15 +1,15 @@
 PODS:
-  - BlueSocket (0.12.92)
-  - SwordRPC (0.1.0):
+  - BlueSocket (0.12.94)
+  - SwordRPC (0.2.2):
     - BlueSocket (~> 0.12)
 
 DEPENDENCIES:
-  - SwordRPC (= 0.1.0)
+  - SwordRPC (= 0.2.2)
 
 SPEC CHECKSUMS:
-  BlueSocket: 3597b6850bdeb7fe2d20eecc69739c226857cdfb
-  SwordRPC: 934584a2127945e2901dd72b6b22f379919593b6
+  BlueSocket: 184ff448002475bfb5d676286c2458da5d971f47
+  SwordRPC: 7ed51064ea9e61c3c6833cf9de90a8be0ab36653
 
-PODFILE CHECKSUM: ade57d6a73c09ee49062ccb7f9198dd20a4c1cc0
+PODFILE CHECKSUM: 1acdf8b04f3f8605429289c36081cd64199e1c22
 
 COCOAPODS: 1.4.0

@@ -52,14 +52,11 @@ class ViewController: NSViewController {
         
         // This probably could be a race condition.
         // Let's hope it connects in under 15 seconds.
-        Timer.scheduledTimer(withTimeInterval: 15.0, repeats: true, block: { (_) in
-            print("Hi from timer.")
-            self.updateEmbed(sender: self)
-        })
+       Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(updateEmbed), userInfo: nil, repeats: true)
         rpc.connect()
     }
     
-    func updateEmbed(sender: Any?) {
+    @objc func updateEmbed(sender: Any?) {
         var presence = RichPresence()
 
         let itunes: AnyObject = SBApplication(bundleIdentifier: "com.apple.iTunes")!

@@ -44,8 +44,6 @@ class ViewController: NSViewController {
         
         // Callback for when RPC connects.
         rpc.onConnect { (rpc) in
-            // Close window immediately.
-            self.view.window?.close()
             Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(self.updateEmbed), userInfo: nil, repeats: true)
             
             var presence = RichPresence()
@@ -57,7 +55,7 @@ class ViewController: NSViewController {
         rpc.connect()
     }
     
-    func updateEmbed(sender: Any?) {
+    @objc func updateEmbed(sender: Any?) {
         var presence = RichPresence()
         
         let itunes: AnyObject = SBApplication(bundleIdentifier: "com.apple.iTunes")!

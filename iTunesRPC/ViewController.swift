@@ -8,6 +8,8 @@
 
 import Cocoa
 import ScriptingBridge
+import SwordRPC
+import Foundation
 
 // Adapted from
 // https://gist.github.com/pvieito/3aee709b97602bfc44961df575e2b696
@@ -33,29 +35,30 @@ import ScriptingBridge
 
 class ViewController: NSViewController {
     
-    var presence : DiscordRichPresence = DiscordRichPresence()
+    // This is the iTunesRPC app ID.
+    // You're welcome to change as you want.
+    let rpc = SwordRPC(appId: "402370117901484042")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // String -> NSString -> UnsafePointer<Int8> -> UnsafeMutablePointer<Int8>
-        // I'm sorry.
-        let appIdPointer = ("402370117901484042" as NSString).utf8String
-        let appIdUnsafePointer: UnsafeMutablePointer<Int8> = UnsafeMutablePointer(mutating: appIdPointer!)
-        
-        // Show rich presence.
-        Discord_Initialize(appIdUnsafePointer, nil, 1, nil)
-        // Close window immediately.
-        self.view.window?.close()
-        Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(updateEmbed), userInfo: nil, repeats: true)
+        // Callback for when RPC connects.
+        rpc.onConnect { (rpc) in
+            // Close window immediately.
+            self.view.window?.close()
+            Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(self.updateEmbed), userInfo: nil, repeats: true)
+            
+            var presence = RichPresence()
+            presence.details = "Loading."
+            presence.state = "Getting details from iTunes..."
+            
+            rpc.setPresence(presence)
+        }
+        rpc.connect()
     }
     
     func updateEmbed(sender: Any?) {
-        var details : String
-        var state : String
-        presence.startTimestamp = 0
-        presence.endTimestamp = 0
-        
+        var presence = RichPresence()
         
         let itunes: AnyObject = SBApplication(bundleIdentifier: "com.apple.iTunes")!
         let track = itunes.currentTrack
@@ -66,41 +69,36 @@ class ViewController: NSViewController {
             // Something's marked as playing, time to see..
             if (playerState == iTunesEPlS.iTunesEPlSPlaying) {
                 let sureTrack = track!
-                details = "\(sureTrack.name!)"
-                state = "\(sureTrack.album!) - \(sureTrack.artist!)"
+                presence.details = "\(sureTrack.name!)"
+                presence.state = "\(sureTrack.album!) - \(sureTrack.artist!)"
                 
                 // The following needs to be in milliseconds.
                 let trackDuration = Double(round(sureTrack.duration!))
                 let trackPosition = Double(round(itunes.playerPosition!))
-                let currentTimestamp = Double(NSDate().timeIntervalSince1970)
+                let currentTimestamp = Date()
                 let trackRemaining = trackDuration - trackPosition
                 
                 // Go back (position amount)
-                presence.startTimestamp = Int64(Double(currentTimestamp - trackPosition))
+                presence.timestamps.start = currentTimestamp - trackPosition
                 // Add time remaining
-                presence.endTimestamp = Int64(Double(currentTimestamp + trackRemaining))
+                presence.timestamps.end = currentTimestamp + trackRemaining
             } else if (playerState == iTunesEPlS.iTunesEPlSPaused) {
-                details = "Paused."
-                state = "Holding your spot in the beat."
+                presence.details = "Paused."
+                presence.state = "Holding your spot in the beat."
             } else if (playerState == iTunesEPlS.iTunesEPlSStopped) {
-                details = "iTunes is stopped."
-                state = "Nothing's happening."
+                presence.details = "iTunes is stopped."
+                presence.state = "Nothing's happening."
             } else {
-                details = "iTunes is most likely closed."
-                state = "If so, please quit this app. If not, please file a bug."
+                presence.details = "iTunes is most likely closed."
+                presence.state = "If so, please quit this app. If not, please file a bug."
             }
         } else {
             // We're in the stopped state.
-            details = "Nothing's playing."
-            state = "(why are you looking at my status anyway?)"
+            presence.details = "Nothing's playing."
+            presence.state = "(why are you looking at my status anyway?)"
         }
         
-        
-        presence.details = (details as NSString).utf8String
-        presence.state = (state as NSString).utf8String
-        
-        Discord_UpdatePresence(&presence)
-        Discord_RunCallbacks()
+        rpc.setPresence(presence)
     }
     
     override var representedObject: Any? {

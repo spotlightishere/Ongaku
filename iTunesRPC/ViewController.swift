@@ -70,6 +70,7 @@ class ViewController: NSViewController {
                 let sureTrack = track!
                 presence.details = "\(sureTrack.name!)"
                 presence.state = "\(sureTrack.album!) - \(sureTrack.artist!)"
+                presence.assets.largeImage = "itunes_logo"
                 
                 // The following needs to be in milliseconds.
                 let trackDuration = Double(round(sureTrack.duration!))

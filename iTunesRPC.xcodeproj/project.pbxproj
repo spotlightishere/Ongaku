@@ -59,7 +59,6 @@
 		42024E0020145BFA00AEBA10 /* iTunesRPCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTunesRPCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42024E0420145BFA00AEBA10 /* iTunesRPCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesRPCUITests.swift; sourceTree = "<group>"; };
 		42024E0620145BFA00AEBA10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		42024E1320145C3600AEBA10 /* discord-rpc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "discord-rpc.h"; sourceTree = "<group>"; };
 		422EEBC3201469ED0028F32C /* libdiscord-rpc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libdiscord-rpc.dylib"; path = "../libdiscord-rpc.dylib"; sourceTree = "<group>"; };
 		422EEBD120146AF70028F32C /* libdiscord-rpc-link.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libdiscord-rpc-link.dylib"; sourceTree = "<group>"; };
 		7D01F317DE02F06802E9ACE5 /* Pods_iTunesRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +116,6 @@
 		42024DE620145BFA00AEBA10 /* iTunesRPC */ = {
 			isa = PBXGroup;
 			children = (
-				42024E1320145C3600AEBA10 /* discord-rpc.h */,
 				42024DE720145BFA00AEBA10 /* AppDelegate.swift */,
 				42024DE920145BFA00AEBA10 /* ViewController.swift */,
 				42024DEB20145BFA00AEBA10 /* Assets.xcassets */,

@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import iTunesRPC
 
 class iTunesRPCTests: XCTestCase {
     

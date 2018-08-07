@@ -175,7 +175,6 @@
 				42024DE220145BF900AEBA10 /* Resources */,
 				422EEBC520146A340028F32C /* CopyFiles */,
 				2EA333FC5DF6A6FF40038CEF /* [CP] Embed Pods Frameworks */,
-				4C4A78936F6429F1CBD015BC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,21 +233,21 @@
 				TargetAttributes = {
 					42024DE320145BF900AEBA10 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2F5AW9EGL6;
-						LastSwiftMigration = 0930;
+						DevelopmentTeam = NP873NYDVX;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					42024DF420145BFA00AEBA10 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2F5AW9EGL6;
-						LastSwiftMigration = 0930;
+						DevelopmentTeam = NP873NYDVX;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 42024DE320145BF900AEBA10;
 					};
 					42024DFF20145BFA00AEBA10 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2F5AW9EGL6;
-						LastSwiftMigration = 0930;
+						DevelopmentTeam = NP873NYDVX;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 42024DE320145BF900AEBA10;
 					};
@@ -319,21 +318,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iTunesRPC/Pods-iTunesRPC-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4C4A78936F6429F1CBD015BC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iTunesRPC/Pods-iTunesRPC-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C8065C36FFB9E4DD9AEF7574 /* [CP] Check Pods Manifest.lock */ = {
@@ -523,21 +507,20 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				DEVELOPMENT_TEAM = NP873NYDVX;
 				INFOPLIST_FILE = iTunesRPC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.iTunesRPC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -549,21 +532,20 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				DEVELOPMENT_TEAM = NP873NYDVX;
 				INFOPLIST_FILE = iTunesRPC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.iTunesRPC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -572,14 +554,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				DEVELOPMENT_TEAM = NP873NYDVX;
 				INFOPLIST_FILE = iTunesRPCTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.iTunesRPCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTunesRPC.app/Contents/MacOS/iTunesRPC";
 			};
 			name = Debug;
@@ -589,14 +573,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				DEVELOPMENT_TEAM = NP873NYDVX;
 				INFOPLIST_FILE = iTunesRPCTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.iTunesRPCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTunesRPC.app/Contents/MacOS/iTunesRPC";
 			};
 			name = Release;
@@ -605,14 +591,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				DEVELOPMENT_TEAM = NP873NYDVX;
 				INFOPLIST_FILE = iTunesRPCUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.iTunesRPCUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = iTunesRPC;
 			};
 			name = Debug;
@@ -621,14 +609,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2F5AW9EGL6;
+				DEVELOPMENT_TEAM = NP873NYDVX;
 				INFOPLIST_FILE = iTunesRPCUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.iTunesRPCUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = iTunesRPC;
 			};
 			name = Release;

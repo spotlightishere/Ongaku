@@ -52,13 +52,15 @@ class ViewController: NSViewController {
         
         // This probably could be a race condition.
         // Let's hope it connects in under 15 seconds.
-       Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(updateEmbed), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(withTimeInterval: 15.0, repeats: true) { (_) in
+            self.updateEmbed()
+        }
         rpc.connect()
     }
     
-    @objc func updateEmbed(sender: Any?) {
+    func updateEmbed() {
         var presence = RichPresence()
-
+        
         let itunes: AnyObject = SBApplication(bundleIdentifier: "com.apple.iTunes")!
         let track = itunes.currentTrack
         if (track != nil) {
@@ -66,7 +68,8 @@ class ViewController: NSViewController {
             let playerState = itunes.playerState!
             
             // Something's marked as playing, time to see..
-            if (playerState == iTunesEPlS.iTunesEPlSPlaying) {
+            switch (playerState) {
+            case .iTunesEPlSPlaying:
                 let sureTrack = track!
                 presence.details = "\(sureTrack.name!)"
                 presence.state = "\(sureTrack.album!) - \(sureTrack.artist!)"
@@ -82,13 +85,16 @@ class ViewController: NSViewController {
                 presence.timestamps.start = currentTimestamp - trackPosition
                 // Add time remaining
                 presence.timestamps.end = currentTimestamp + trackRemaining
-            } else if (playerState == iTunesEPlS.iTunesEPlSPaused) {
+                break
+            case .iTunesEPlSPaused:
                 presence.details = "Paused."
                 presence.state = "Holding your spot in the beat."
-            } else if (playerState == iTunesEPlS.iTunesEPlSStopped) {
+                break
+            case .iTunesEPlSStopped:
                 presence.details = "iTunes is stopped."
                 presence.state = "Nothing's happening."
-            } else {
+                break
+            default:
                 presence.details = "iTunes is most likely closed."
                 presence.state = "If so, please quit this app. If not, please file a bug."
             }

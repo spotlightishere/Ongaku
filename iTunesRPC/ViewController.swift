@@ -45,9 +45,11 @@ class ViewController: NSViewController {
         rpc.onConnect { (_) in
             var presence = RichPresence()
             presence.details = "Loading."
-            presence.state = "Getting details from iTunes..."
+            presence.state = "Getting details from Music..."
             self.rpc.setPresence(presence)
             print("Connected to Discord.")
+            
+            self.updateEmbed()
         }
         
         // This probably could be a race condition.
@@ -61,7 +63,7 @@ class ViewController: NSViewController {
     func updateEmbed() {
         var presence = RichPresence()
         
-        let itunes: AnyObject = SBApplication(bundleIdentifier: "com.apple.iTunes")!
+        let itunes: AnyObject = SBApplication(bundleIdentifier: "com.apple.Music")!
         let track = itunes.currentTrack
         if (track != nil) {
             // Something's doing something, player can't be nil.. right?
@@ -79,23 +81,27 @@ class ViewController: NSViewController {
                 let trackDuration = Double(round(sureTrack.duration!))
                 let trackPosition = Double(round(itunes.playerPosition!))
                 let currentTimestamp = Date()
-                let trackRemaining = trackDuration - trackPosition
+                let trackSecondsRemaining = trackDuration - trackPosition
+                
+                let startTimestamp = currentTimestamp - trackPosition
+                let endTimestamp = currentTimestamp + trackSecondsRemaining
                 
                 // Go back (position amount)
-                presence.timestamps.start = currentTimestamp - trackPosition
+                presence.timestamps.start = Date(timeIntervalSince1970: startTimestamp.timeIntervalSince1970 * 1000)
+
                 // Add time remaining
-                presence.timestamps.end = currentTimestamp + trackRemaining
+                presence.timestamps.end = Date(timeIntervalSince1970: endTimestamp.timeIntervalSince1970 * 1000)
                 break
             case .iTunesEPlSPaused:
                 presence.details = "Paused."
                 presence.state = "Holding your spot in the beat."
                 break
             case .iTunesEPlSStopped:
-                presence.details = "iTunes is stopped."
+                presence.details = "Music is stopped."
                 presence.state = "Nothing's happening."
                 break
             default:
-                presence.details = "iTunes is most likely closed."
+                presence.details = "Music is most likely closed."
                 presence.state = "If so, please quit this app. If not, please file a bug."
             }
         } else {

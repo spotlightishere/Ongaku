@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,7 +13,7 @@
 		42024DEF20145BFA00AEBA10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42024DED20145BFA00AEBA10 /* Main.storyboard */; };
 		42024DFA20145BFA00AEBA10 /* iTunesRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DF920145BFA00AEBA10 /* iTunesRPCTests.swift */; };
 		42024E0520145BFA00AEBA10 /* iTunesRPCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024E0420145BFA00AEBA10 /* iTunesRPCUITests.swift */; };
-		678422FA65E75766BB624718 /* Pods_iTunesRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D01F317DE02F06802E9ACE5 /* Pods_iTunesRPC.framework */; };
+		42E0BC97242925AB0041F1C4 /* SwordRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 42E0BC96242925AB0041F1C4 /* SwordRPC */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		249241CF715C3E32A1DFBF6F /* Pods-iTunesRPC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesRPC.release.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesRPC/Pods-iTunesRPC.release.xcconfig"; sourceTree = "<group>"; };
 		42024DE420145BFA00AEBA10 /* iTunesRPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesRPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42024DE720145BFA00AEBA10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42024DE920145BFA00AEBA10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,10 +58,7 @@
 		42024E0020145BFA00AEBA10 /* iTunesRPCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTunesRPCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42024E0420145BFA00AEBA10 /* iTunesRPCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesRPCUITests.swift; sourceTree = "<group>"; };
 		42024E0620145BFA00AEBA10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		422EEBC3201469ED0028F32C /* libdiscord-rpc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libdiscord-rpc.dylib"; path = "../libdiscord-rpc.dylib"; sourceTree = "<group>"; };
-		422EEBD120146AF70028F32C /* libdiscord-rpc-link.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libdiscord-rpc-link.dylib"; sourceTree = "<group>"; };
-		7D01F317DE02F06802E9ACE5 /* Pods_iTunesRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDA99E90A474F7FC0EB2A99E /* Pods-iTunesRPC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesRPC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesRPC/Pods-iTunesRPC.debug.xcconfig"; sourceTree = "<group>"; };
+		42E0BC98242929B10041F1C4 /* iTunesRPC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iTunesRPC.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				678422FA65E75766BB624718 /* Pods_iTunesRPC.framework in Frameworks */,
+				42E0BC97242925AB0041F1C4 /* SwordRPC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,8 +94,6 @@
 				42024DF820145BFA00AEBA10 /* iTunesRPCTests */,
 				42024E0320145BFA00AEBA10 /* iTunesRPCUITests */,
 				42024DE520145BFA00AEBA10 /* Products */,
-				422EEBC2201469ED0028F32C /* Frameworks */,
-				90AF734E1E39AD110F2D5A53 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +110,7 @@
 		42024DE620145BFA00AEBA10 /* iTunesRPC */ = {
 			isa = PBXGroup;
 			children = (
+				42E0BC98242929B10041F1C4 /* iTunesRPC.entitlements */,
 				42024DE720145BFA00AEBA10 /* AppDelegate.swift */,
 				42024DE920145BFA00AEBA10 /* ViewController.swift */,
 				42024DEB20145BFA00AEBA10 /* Assets.xcassets */,
@@ -143,25 +138,6 @@
 			path = iTunesRPCUITests;
 			sourceTree = "<group>";
 		};
-		422EEBC2201469ED0028F32C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				422EEBD120146AF70028F32C /* libdiscord-rpc-link.dylib */,
-				422EEBC3201469ED0028F32C /* libdiscord-rpc.dylib */,
-				7D01F317DE02F06802E9ACE5 /* Pods_iTunesRPC.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		90AF734E1E39AD110F2D5A53 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DDA99E90A474F7FC0EB2A99E /* Pods-iTunesRPC.debug.xcconfig */,
-				249241CF715C3E32A1DFBF6F /* Pods-iTunesRPC.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,18 +145,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42024E0920145BFA00AEBA10 /* Build configuration list for PBXNativeTarget "iTunesRPC" */;
 			buildPhases = (
-				C8065C36FFB9E4DD9AEF7574 /* [CP] Check Pods Manifest.lock */,
 				42024DE020145BF900AEBA10 /* Sources */,
 				42024DE120145BF900AEBA10 /* Frameworks */,
 				42024DE220145BF900AEBA10 /* Resources */,
 				422EEBC520146A340028F32C /* CopyFiles */,
-				2EA333FC5DF6A6FF40038CEF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = iTunesRPC;
+			packageProductDependencies = (
+				42E0BC96242925AB0041F1C4 /* SwordRPC */,
+			);
 			productName = iTunesRPC;
 			productReference = 42024DE420145BFA00AEBA10 /* iTunesRPC.app */;
 			productType = "com.apple.product-type.application";
@@ -228,26 +205,26 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Spotlight IsHere";
 				TargetAttributes = {
 					42024DE320145BF900AEBA10 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = NP873NYDVX;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 					};
 					42024DF420145BFA00AEBA10 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = NP873NYDVX;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 42024DE320145BF900AEBA10;
 					};
 					42024DFF20145BFA00AEBA10 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = NP873NYDVX;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 42024DE320145BF900AEBA10;
 					};
@@ -255,13 +232,16 @@
 			};
 			buildConfigurationList = 42024DDF20145BF900AEBA10 /* Build configuration list for PBXProject "iTunesRPC" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
 			mainGroup = 42024DDB20145BF900AEBA10;
+			packageReferences = (
+				42E0BC95242925AB0041F1C4 /* XCRemoteSwiftPackageReference "SwordRPC" */,
+			);
 			productRefGroup = 42024DE520145BFA00AEBA10 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -298,47 +278,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2EA333FC5DF6A6FF40038CEF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-iTunesRPC/Pods-iTunesRPC-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BlueSocket/Socket.framework",
-				"${BUILT_PRODUCTS_DIR}/SwordRPC/SwordRPC.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Socket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwordRPC.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iTunesRPC/Pods-iTunesRPC-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C8065C36FFB9E4DD9AEF7574 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iTunesRPC-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		42024DE020145BF900AEBA10 /* Sources */ = {
@@ -397,6 +336,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -454,6 +394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -495,21 +436,27 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
 		42024E0A20145BFA00AEBA10 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDA99E90A474F7FC0EB2A99E /* Pods-iTunesRPC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iTunesRPC/iTunesRPC.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NP873NYDVX;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iTunesRPC/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -520,21 +467,26 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		42024E0B20145BFA00AEBA10 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 249241CF715C3E32A1DFBF6F /* Pods-iTunesRPC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iTunesRPC/iTunesRPC.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NP873NYDVX;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iTunesRPC/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -545,7 +497,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -559,11 +511,15 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = NP873NYDVX;
 				INFOPLIST_FILE = iTunesRPCTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.iTunesRPCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTunesRPC.app/Contents/MacOS/iTunesRPC";
 			};
 			name = Debug;
@@ -578,11 +534,15 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = NP873NYDVX;
 				INFOPLIST_FILE = iTunesRPCTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.iTunesRPCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTunesRPC.app/Contents/MacOS/iTunesRPC";
 			};
 			name = Release;
@@ -596,11 +556,15 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = NP873NYDVX;
 				INFOPLIST_FILE = iTunesRPCUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.iTunesRPCUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = iTunesRPC;
 			};
 			name = Debug;
@@ -614,11 +578,15 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = NP873NYDVX;
 				INFOPLIST_FILE = iTunesRPCUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.spotlightishere.iTunesRPCUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = iTunesRPC;
 			};
 			name = Release;
@@ -663,6 +631,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		42E0BC95242925AB0041F1C4 /* XCRemoteSwiftPackageReference "SwordRPC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://owo.codes/projects-in-disarray/platform-bots/SwordRPC";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		42E0BC96242925AB0041F1C4 /* SwordRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42E0BC95242925AB0041F1C4 /* XCRemoteSwiftPackageReference "SwordRPC" */;
+			productName = SwordRPC;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 42024DDC20145BF900AEBA10 /* Project object */;
 }

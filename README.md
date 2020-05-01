@@ -1,11 +1,6 @@
-# what do
-ok so imagine you're a sterotypical gamer hax0r teen and you're like
-"i want the entire world to know what i'm listening to."
-well gratz if you use apple music
-this is the thing for you!
+# Ongaku
+_You know, [ongaku](https://jisho.org/word/%E9%9F%B3%E6%A5%BD)._
 
-# how do
-open this up in Xcode and build
+A simple application providing the now playing state from iTunes (or the Music app) as RPC in Discord via [SwordRPC](https://github.com/Azoy/SwordRPC).
 
-# why are there two dylibs
-i broke embedded binaries ok so one's to link and one's to copy to the frameworks folder
+Download from the Releases tab, or build yourself!

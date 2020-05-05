@@ -71,11 +71,12 @@ class ViewController: NSViewController {
             self.updateEmbed()
         }
         
-        // This probably could be a race condition.
-        // Let's hope it connects in under 15 seconds.
-        Timer.scheduledTimer(withTimeInterval: 15.0, repeats: true) { (_) in
+        // iTunes/Music send out a NSNotification upon various state changes.
+        // We should update the embed on these events.
+        DistributedNotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "\(self.appName).playerInfo"), object: nil, queue: nil, using: { _ in
             self.updateEmbed()
-        }
+        })
+        
         rpc.connect()
     }
     

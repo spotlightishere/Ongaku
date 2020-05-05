@@ -37,9 +37,22 @@ class ViewController: NSViewController {
     // This is the Ongaku app ID.
     // You're welcome to change as you want.
     let rpc = SwordRPC(appId: "402370117901484042")
+    var appName = ""
+    var assetName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(OSX 10.15, *) {
+            // The app's named Music.
+            // While com.apple.iTunes.playerInfo is sent as well,
+            // it's best to update now and plan for the future.
+            appName = "com.apple.Music"
+            assetName = "music_logo"
+        } else {
+            appName = "com.apple.iTunes"
+            assetName = "itunes_logo"
+        }
         
         // Callback for when RPC connects.
         rpc.onConnect { (_) in
@@ -54,6 +67,7 @@ class ViewController: NSViewController {
                 self.view.window?.close()
             }
             
+            // Populate information initially.
             self.updateEmbed()
         }
         
@@ -68,7 +82,7 @@ class ViewController: NSViewController {
     func updateEmbed() {
         var presence = RichPresence()
         
-        let itunes: AnyObject = SBApplication(bundleIdentifier: "com.apple.Music")!
+        let itunes: AnyObject = SBApplication(bundleIdentifier: appName)!
         let track = itunes.currentTrack
         if (track != nil) {
             // Something's doing something, player can't be nil.. right?
@@ -80,7 +94,7 @@ class ViewController: NSViewController {
                 let sureTrack = track!
                 presence.details = "\(sureTrack.name!)"
                 presence.state = "\(sureTrack.album!) - \(sureTrack.artist!)"
-                presence.assets.largeImage = "itunes_logo"
+                presence.assets.largeImage = assetName
                 
                 // The following needs to be in milliseconds.
                 let trackDuration = Double(round(sureTrack.duration!))
@@ -93,7 +107,7 @@ class ViewController: NSViewController {
                 
                 // Go back (position amount)
                 presence.timestamps.start = Date(timeIntervalSince1970: startTimestamp.timeIntervalSince1970 * 1000)
-
+                
                 // Add time remaining
                 presence.timestamps.end = Date(timeIntervalSince1970: endTimestamp.timeIntervalSince1970 * 1000)
                 break

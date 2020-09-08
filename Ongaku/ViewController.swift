@@ -37,17 +37,19 @@ class ViewController: NSViewController {
     // This is the Ongaku app ID.
     // You're welcome to change as you want.
     let rpc = SwordRPC(appId: "402370117901484042")
-    var appName = ""
+    
+    // The app's named Music.
+    // While com.apple.iTunes.playerInfo is sent as well,
+    // it's best to update now and plan for the future.
+    var appName = "com.apple.Music"
     var assetName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(OSX 10.15, *) {
-            // The app's named Music.
-            // While com.apple.iTunes.playerInfo is sent as well,
-            // it's best to update now and plan for the future.
-            appName = "com.apple.Music"
+        if #available(macOS 11.0, *) {
+            assetName = "big_sur_logo"
+        } else if #available(macOS 10.15, *){
             assetName = "music_logo"
         } else {
             appName = "com.apple.iTunes"

@@ -6,4 +6,4 @@ A simple application providing the now playing state from iTunes (or the Music a
 Download from the Releases tab, or build yourself!
 
 ### Credits
-[puggo](https://github.com/pugthelouie) for making it less of a meme, and far more usable.
+[Jack Dorland](https://github.com/jackdorland) for making it less of a meme, and far more usable.

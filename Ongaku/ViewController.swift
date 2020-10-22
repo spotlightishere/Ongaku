@@ -91,13 +91,15 @@ class ViewController: NSViewController {
             // Something's doing something, player can't be nil.. right?
             let playerState = itunes.playerState!
             
+            // Set macOS player image before switch
+            presence.assets.largeImage = assetName
+            
             // Something's marked as playing, time to see..
             switch (playerState) {
             case .iTunesEPlSPlaying:
                 let sureTrack = track!
                 presence.details = "\(sureTrack.name!)"
                 presence.state = "\(sureTrack.album!) - \(sureTrack.artist!)"
-                presence.assets.largeImage = assetName
                 
                 // The following needs to be in milliseconds.
                 let trackDuration = Double(round(sureTrack.duration!))
@@ -124,7 +126,7 @@ class ViewController: NSViewController {
                 break
             default:
                 presence.details = "Music is most likely closed."
-                presence.state = "If so, please quit this app. If not, please file a bug."
+                presence.state = "If so, please quit this app. If not, please file a bug."   
             }
         } else {
             // We're in the stopped state.

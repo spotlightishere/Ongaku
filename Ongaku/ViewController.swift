@@ -58,10 +58,6 @@ class ViewController: NSViewController {
         
         // Callback for when RPC connects.
         rpc.onConnect { (_) in
-            var presence = RichPresence()
-            presence.details = "Loading."
-            presence.state = "Getting details from Music..."
-            self.rpc.setPresence(presence)
             print("Connected to Discord.")
             
             DispatchQueue.main.async {
@@ -91,13 +87,14 @@ class ViewController: NSViewController {
             // Something's doing something, player can't be nil.. right?
             let playerState = itunes.playerState!
             
-            // Set macOS player image before switch
+            // Something's marked as playing, time to see..
+            let sureTrack = track!
+            
+            // Always set image.
             presence.assets.largeImage = assetName
             
-            // Something's marked as playing, time to see..
             switch (playerState) {
             case .iTunesEPlSPlaying:
-                let sureTrack = track!
                 presence.details = "\(sureTrack.name!)"
                 presence.state = "\(sureTrack.album!) - \(sureTrack.artist!)"
                 
@@ -117,24 +114,21 @@ class ViewController: NSViewController {
                 presence.timestamps.end = Date(timeIntervalSince1970: endTimestamp.timeIntervalSince1970 * 1000)
                 break
             case .iTunesEPlSPaused:
-                presence.details = "Paused."
-                presence.state = "Holding your spot in the beat."
-                break
-            case .iTunesEPlSStopped:
-                presence.details = "Music is stopped."
-                presence.state = "Nothing's happening."
+                presence.details = "Paused - \(sureTrack.name!)"
+                presence.state = "\(sureTrack.album!) - \(sureTrack.artist!)"
                 break
             default:
-                presence.details = "Music is most likely closed."
-                presence.state = "If so, please quit this app. If not, please file a bug."   
+                presence.details = "Stopped"
+                presence.state = "Nothing is currently playing"
+                break
             }
         } else {
             // We're in the stopped state.
-            presence.details = "Nothing's playing."
-            presence.state = "(why are you looking at my status anyway?)"
+            presence.details = "Stopped"
+            presence.state = "Nothing is currently playing"
         }
-        
         rpc.setPresence(presence)
+        
     }
     
     override var representedObject: Any? {
@@ -145,4 +139,3 @@ class ViewController: NSViewController {
     
     
 }
-

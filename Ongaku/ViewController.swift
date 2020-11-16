@@ -97,6 +97,9 @@ class ViewController: NSViewController {
             case .iTunesEPlSPlaying:
                 presence.details = "\(sureTrack.name!)"
                 presence.state = "\(sureTrack.album!) - \(sureTrack.artist!)"
+                presence.assets.largeText = "\(sureTrack.name!)"
+                presence.assets.smallImage = "play"
+                presence.assets.smallText = "Actively playing"
                 
                 // The following needs to be in milliseconds.
                 let trackDuration = Double(round(sureTrack.duration!))
@@ -116,16 +119,24 @@ class ViewController: NSViewController {
             case .iTunesEPlSPaused:
                 presence.details = "Paused - \(sureTrack.name!)"
                 presence.state = "\(sureTrack.album!) - \(sureTrack.artist!)"
+                presence.assets.largeImage = assetName
+                presence.assets.largeText = "\(sureTrack.name!)"
+                presence.assets.smallImage = "pause"
+                presence.assets.smallText = "Currently paused"
                 break
             default:
                 presence.details = "Stopped"
                 presence.state = "Nothing is currently playing"
+                presence.assets.largeImage = assetName
+                presence.assets.largeText = "There's nothing here!"
                 break
             }
         } else {
             // We're in the stopped state.
             presence.details = "Stopped"
             presence.state = "Nothing is currently playing"
+            presence.assets.largeImage = assetName
+            presence.assets.largeText = "There's nothing here!"
         }
         rpc.setPresence(presence)
         

@@ -81,6 +81,14 @@ class ViewController: NSViewController {
     func updateEmbed() {
         var presence = RichPresence()
         
+        // By default, show a lack of state.
+        presence.details = "Stopped"
+        presence.state = "Nothing is currently playing"
+        presence.assets.largeImage = assetName
+        presence.assets.largeText = "There's nothing here!"
+        presence.assets.smallImage = "stop"
+        presence.assets.smallText = "Currently stopped"
+        
         let itunes: AnyObject = SBApplication(bundleIdentifier: appName)!
         let track = itunes.currentTrack
         if (track != nil) {
@@ -125,19 +133,10 @@ class ViewController: NSViewController {
                 presence.assets.smallText = "Currently paused"
                 break
             default:
-                presence.details = "Stopped"
-                presence.state = "Nothing is currently playing"
-                presence.assets.largeImage = assetName
-                presence.assets.largeText = "There's nothing here!"
                 break
             }
-        } else {
-            // We're in the stopped state.
-            presence.details = "Stopped"
-            presence.state = "Nothing is currently playing"
-            presence.assets.largeImage = assetName
-            presence.assets.largeText = "There's nothing here!"
         }
+        
         rpc.setPresence(presence)
         
     }

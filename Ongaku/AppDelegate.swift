@@ -10,17 +10,18 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    @IBOutlet weak var menu: NSMenu?
+    @IBOutlet weak var firstMenuItem: NSMenuItem?
+    
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusItem.image = NSImage(named: "status_icon")
-        statusItem.action = #selector(quitApp)
+        if let menu = menu {
+            statusItem.menu = menu
+        }
     }
 
-    @objc func quitApp(sender: Any?) {
-        NSApplication.shared.terminate(sender)
-    }
-    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }

@@ -28,8 +28,10 @@
 	<true/>
 	<key>NSAppleEventsUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs to talk to Music in order to operate.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs to access Apple Music in order to obtain cover art.</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2020 Spotlight Deveaux. All rights reserved.</string>
+	<string>Copyright © 2022 Spotlight Deveaux. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>

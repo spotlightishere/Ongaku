@@ -638,10 +638,10 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		42E0BC95242925AB0041F1C4 /* XCRemoteSwiftPackageReference "SwordRPC" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://owo.codes/projects-in-disarray/platform-bots/SwordRPC";
+			repositoryURL = "https://github.com/spotlightishere/SwordRPC";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.3;
+				minimumVersion = 0.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

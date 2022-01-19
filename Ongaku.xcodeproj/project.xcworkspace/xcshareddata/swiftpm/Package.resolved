@@ -2,21 +2,21 @@
   "object": {
     "pins": [
       {
-        "package": "BlueSocket",
-        "repositoryURL": "https://github.com/IBM-Swift/BlueSocket.git",
+        "package": "swift-nio",
+        "repositoryURL": "https://github.com/apple/swift-nio",
         "state": {
           "branch": null,
-          "revision": "c46a3d41f5b2401d18bcb46d0101cdc5cd13e307",
-          "version": "1.0.52"
+          "revision": "51c3fc2e4a0fcdf4a25089b288dd65b73df1b0ef",
+          "version": "2.37.0"
         }
       },
       {
         "package": "SwordRPC",
-        "repositoryURL": "https://owo.codes/projects-in-disarray/platform-bots/SwordRPC",
+        "repositoryURL": "https://github.com/spotlightishere/SwordRPC",
         "state": {
           "branch": null,
-          "revision": "890c3a90ab75c292c5be342bbc09935cd1b1c48b",
-          "version": "0.2.3"
+          "revision": "87e66f9f5783b3ec9467a296a1b94e32482b39b4",
+          "version": "0.3.0"
         }
       }
     ]

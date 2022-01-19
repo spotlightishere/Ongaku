@@ -10,21 +10,19 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    @IBOutlet weak var menu: NSMenu?
-    @IBOutlet weak var firstMenuItem: NSMenuItem?
-    
+    @IBOutlet var menu: NSMenu?
+    @IBOutlet var firstMenuItem: NSMenuItem?
+
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        statusItem.image = NSImage(named: "status_icon")
+
+    func applicationDidFinishLaunching(_: Notification) {
+        statusItem.button!.image = NSImage(named: "status_icon")
         if let menu = menu {
             statusItem.menu = menu
         }
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
+    func applicationWillTerminate(_: Notification) {
         // Insert code here to tear down your application
     }
-
-
 }

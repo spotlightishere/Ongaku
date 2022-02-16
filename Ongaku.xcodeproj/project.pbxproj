@@ -95,7 +95,9 @@
 				42024E0320145BFA00AEBA10 /* OngakuUITests */,
 				42024DE520145BFA00AEBA10 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		42024DE520145BFA00AEBA10 /* Products */ = {
 			isa = PBXGroup;

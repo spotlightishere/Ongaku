@@ -95,16 +95,15 @@ class ViewController: NSViewController {
             // Something's marked as playing, time to see..
             let sureTrack = track!
 
+            presence.state = "\(sureTrack.artist!) \u{2014} \(sureTrack.album!)"
+            presence.assets.largeText = "\(sureTrack.name!)"
+            presence.assets.largeImage = assetName
+
             switch playerState {
             case .iTunesEPlSPlaying:
-                let name = sureTrack.name!
-                let album = sureTrack.artist!
-
-                presence.details = "\(name)"
-                presence.state = "\(album) - \(name)"
-                presence.assets.largeText = "\(name)"
+                presence.details = "\(sureTrack.name!)"
                 presence.assets.smallImage = "play"
-                presence.assets.smallText = "Actively playing"
+                presence.assets.smallText = "Playing"
 
                 // Determine if this song is available on the iTunes Store.
                 // It's okay if it is not - we default to the Music icon.
@@ -130,12 +129,9 @@ class ViewController: NSViewController {
                 // Add time remaining
                 presence.timestamps.end = Date(timeIntervalSince1970: endTimestamp.timeIntervalSince1970 * 1000)
             case .iTunesEPlSPaused:
-                presence.details = "Paused - \(sureTrack.name!)"
-                presence.state = "\(sureTrack.album!) - \(sureTrack.artist!)"
-                presence.assets.largeImage = assetName
-                presence.assets.largeText = "\(sureTrack.name!)"
+                presence.details = "Paused: \(sureTrack.name!)"
                 presence.assets.smallImage = "pause"
-                presence.assets.smallText = "Currently paused"
+                presence.assets.smallText = "Paused"
             default:
                 break
             }

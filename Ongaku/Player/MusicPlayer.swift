@@ -1,0 +1,170 @@
+//
+//  MusicPlayer.swift
+//  Ongaku
+//
+//  Created by Skip Rousseau on 4/30/22.
+//  Copyright © 2022 Spotlight Deveaux. All rights reserved.
+//
+
+import Foundation
+import Combine
+import ScriptingBridge
+import os.log
+import MusicKit
+
+// Adapted from:
+// https://gist.github.com/pvieito/3aee709b97602bfc44961df575e2b696
+
+@objc enum iTunesEPlS: NSInteger {
+    case iTunesEPlSStopped = 0x6B50_5353
+    case iTunesEPlSPlaying = 0x6B50_5350
+    case iTunesEPlSPaused = 0x6B50_5370
+    // Others omitted...
+}
+
+@objc protocol iTunesTrack {
+    @objc optional var album: String { get }
+    @objc optional var artist: String { get }
+    @objc optional var duration: CDouble { get }
+    @objc optional var name: String { get }
+    @objc optional var playerState: iTunesEPlS { get }
+}
+
+@objc protocol iTunesApplication {
+    @objc optional var currentTrack: iTunesTrack { get }
+    @objc optional var playerPosition: CDouble { get }
+}
+
+fileprivate let musicBundleId = "com.apple.Music"
+
+enum MusicPlayerError: Error {
+    case scriptingBridgeFailure
+}
+
+fileprivate var log: Logger = Logger(subsystem: "io.github.spotlightishere.Ongaku", category: "music-player")
+
+fileprivate func fetchPlayerState() throws -> PlayerState {
+    guard let music: AnyObject = SBApplication(bundleIdentifier: musicBundleId),
+          let playerState = music.playerState,
+          let track = music.currentTrack else {
+        throw MusicPlayerError.scriptingBridgeFailure
+    }
+
+    guard playerState != .iTunesEPlSStopped else {
+        return .stopped
+    }
+
+    guard let artist = track.artist,
+          let album = track.album,
+          let name = track.name,
+          let durationSeconds = track.duration,
+          let positionSeconds = music.playerPosition else {
+        throw MusicPlayerError.scriptingBridgeFailure
+    }
+
+    let ongakuTrack = Track(
+        title: name,
+        album: album,
+        artist: artist,
+        duration: durationSeconds
+    )
+
+    log.info("Constructed track representation: \(String(describing: ongakuTrack))")
+
+    let active = PlayerState.Active(track: ongakuTrack, position: positionSeconds)
+    return playerState == .iTunesEPlSPaused ? .paused(active) : .playing(active)
+}
+
+
+class MusicPlayer: Player {
+    var state: CurrentValueSubject<PlayerState, Never>
+
+    fileprivate var sink: AnyCancellable?
+
+    init() throws {
+        let name: NSNotification.Name = .init(rawValue: "\(musicBundleId).playerInfo")
+
+        state = CurrentValueSubject(try fetchPlayerState())
+        sink = DistributedNotificationCenter.default.publisher(for: name)
+            .sink { [weak self] notification in
+                guard let self = self else { return }
+
+                guard var playerState = try? fetchPlayerState() else {
+                    log.error("Failed to fetch player state upon receiving a notification, not sending a new player state.")
+                    return
+                }
+
+                func storeUrl() -> String? {
+                    let storeUrl = notification.userInfo?["Store URL"] as? String
+                    log.info("Current track's store URL: \(storeUrl ?? "<unknown>")")
+                    return storeUrl
+                }
+
+                // The store URL of the active track is (ostensibly) only
+                // available in DistributedNotificationCenter notifications, so
+                // we must inject the store URL here. It doesn't seem to be
+                // accessible through the scripting bridge, unfortunately.
+                //
+                // Also, we need to copy stuff around because they're structs.
+                if case .playing(var active) = playerState {
+                    active.track.url = storeUrl()
+                    playerState = .playing(PlayerState.Active(track: active.track, position: active.position))
+                } else if case .paused(var active) = playerState {
+                    active.track.url = storeUrl()
+                    playerState = .paused(PlayerState.Active(track: active.track, position: active.position))
+                }
+
+                log.info("Sending a new player state: \(String(describing: playerState))")
+                self.state.send(playerState)
+            }
+    }
+
+    func fetchArtwork(forTrack track: Track) async throws -> URL? {
+        log.info("Requested to fetch artwork for track: \(String(describing: track))")
+
+        guard let url = track.url else {
+            return nil
+        }
+
+        let result = await MusicAuthorization.request()
+        guard result == .authorized else {
+            // It may be that the user denied.
+            return nil
+        }
+
+        // Determine the song ID from our given itms url.
+        // We expect a format similar to: itmss://itunes.com/album?p=1525065667&i=1525065832.
+        guard let components = URLComponents(string: url) else {
+            return nil
+        }
+
+        // We obtain query items and search for "i".
+        guard let queryParam = components.queryItems?.filter({ $0.name == "i" }).first,
+              let queryId = queryParam.value else {
+            return nil
+        }
+
+        // Request the song for the given ID.
+        var request = MusicCatalogResourceRequest<Song>(matching: \.id, equalTo: MusicItemID(stringLiteral: queryId))
+        request.limit = 1
+
+        let response: MusicCatalogResourceResponse<Song> = try await request.response()
+
+        // Seems we could not find the song.
+        if response.items.isEmpty {
+            return nil
+        }
+
+        guard let song = response.items.first,
+              let artwork = song.artwork?.url(width: 512, height: 512) else {
+            return nil
+        }
+        return artwork
+    }
+
+    deinit {
+        if let sink = sink {
+            sink.cancel()
+        }
+    }
+}

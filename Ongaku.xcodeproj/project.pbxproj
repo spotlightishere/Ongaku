@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12F47205281D214A00609C94 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F47204281D214A00609C94 /* Track.swift */; };
+		12F47207281D21D600609C94 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F47206281D21D600609C94 /* Player.swift */; };
+		12F47209281D227B00609C94 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F47208281D227B00609C94 /* PlayerState.swift */; };
+		12F4720B281D2B6000609C94 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4720A281D2B6000609C94 /* MusicPlayer.swift */; };
 		42024DE820145BFA00AEBA10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DE720145BFA00AEBA10 /* AppDelegate.swift */; };
 		42024DEA20145BFA00AEBA10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DE920145BFA00AEBA10 /* ViewController.swift */; };
 		42024DEC20145BFA00AEBA10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42024DEB20145BFA00AEBA10 /* Assets.xcassets */; };
@@ -46,6 +50,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		12F47204281D214A00609C94 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		12F47206281D21D600609C94 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		12F47208281D227B00609C94 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
+		12F4720A281D2B6000609C94 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		42024DE420145BFA00AEBA10 /* Ongaku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ongaku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42024DE720145BFA00AEBA10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42024DE920145BFA00AEBA10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +95,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12F47203281D202700609C94 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				12F47204281D214A00609C94 /* Track.swift */,
+				12F47206281D21D600609C94 /* Player.swift */,
+				12F47208281D227B00609C94 /* PlayerState.swift */,
+				12F4720A281D2B6000609C94 /* MusicPlayer.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		42024DDB20145BF900AEBA10 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +131,7 @@
 		42024DE620145BFA00AEBA10 /* Ongaku */ = {
 			isa = PBXGroup;
 			children = (
+				12F47203281D202700609C94 /* Player */,
 				42E0BC98242929B10041F1C4 /* Ongaku.entitlements */,
 				42024DE720145BFA00AEBA10 /* AppDelegate.swift */,
 				42024DE920145BFA00AEBA10 /* ViewController.swift */,
@@ -285,8 +305,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12F47209281D227B00609C94 /* PlayerState.swift in Sources */,
+				12F47207281D21D600609C94 /* Player.swift in Sources */,
+				12F4720B281D2B6000609C94 /* MusicPlayer.swift in Sources */,
 				42024DEA20145BFA00AEBA10 /* ViewController.swift in Sources */,
 				42024DE820145BFA00AEBA10 /* AppDelegate.swift in Sources */,
+				12F47205281D214A00609C94 /* Track.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

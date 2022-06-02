@@ -14,7 +14,7 @@ import os.log
 
 fileprivate let log: Logger = Logger(subsystem: "io.github.spotlightishere.Ongaku", category: "view-controller")
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, SwordRPCDelegate {
     // This is the Ongaku app ID.
     // You're welcome to change as you want.
     let rpc = SwordRPC(appId: "402370117901484042")
@@ -34,21 +34,7 @@ class ViewController: NSViewController {
             fatalError("Can't start -- failed to create MusicPlayer. \(error)")
         }
 
-        // Callback for when RPC connects.
-        rpc.onConnect { _ in
-            log.notice("Connected to Discord RPC.")
-
-            DispatchQueue.main.async {
-                // Bye window :)
-                self.view.window?.close()
-            }
-
-            // Populate information initially.
-            // We cannot obtain a store URL initially.
-            Task(priority: .userInitiated) {
-                await self.updateRichPresence(playerState: self.player.state.value)
-            }
-        }
+        rpc.delegate = self
 
         playerSink = player.state.sink { state in
             Task(priority: .userInitiated) {
@@ -57,6 +43,21 @@ class ViewController: NSViewController {
         }
 
         rpc.connect()
+    }
+    
+    func rpcDidConnect() {
+        log.notice("Connected to Discord RPC.")
+
+        DispatchQueue.main.async {
+            // Bye window :)
+            self.view.window?.close()
+        }
+
+        // Populate information initially.
+        // We cannot obtain a store URL initially.
+        Task(priority: .userInitiated) {
+            await self.updateRichPresence(playerState: self.player.state.value)
+        }
     }
 
     func updateRichPresence(playerState state: PlayerState) async {
@@ -96,10 +97,10 @@ class ViewController: NSViewController {
                 log.debug("Start timestamp: \(startTimestamp); end timestamp: \(endTimestamp)")
 
                 // Time that the track was started
-                presence.timestamps.start = Date(timeIntervalSince1970: startTimestamp.timeIntervalSince1970 * 1000)
+                presence.timestamps.start = Date(timeIntervalSince1970: startTimestamp.timeIntervalSince1970)
 
                 // Time that the track ends
-                presence.timestamps.end = Date(timeIntervalSince1970: endTimestamp.timeIntervalSince1970 * 1000)
+                presence.timestamps.end = Date(timeIntervalSince1970: endTimestamp.timeIntervalSince1970)
             }
         }
 

@@ -1,25 +1,23 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "swift-nio",
-        "repositoryURL": "https://github.com/apple/swift-nio",
-        "state": {
-          "branch": null,
-          "revision": "51c3fc2e4a0fcdf4a25089b288dd65b73df1b0ef",
-          "version": "2.37.0"
-        }
-      },
-      {
-        "package": "SwordRPC",
-        "repositoryURL": "https://github.com/spotlightishere/SwordRPC",
-        "state": {
-          "branch": null,
-          "revision": "87e66f9f5783b3ec9467a296a1b94e32482b39b4",
-          "version": "0.3.0"
-        }
+  "pins" : [
+    {
+      "identity" : "swift-nio",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-nio",
+      "state" : {
+        "revision" : "124119f0bb12384cef35aa041d7c3a686108722d",
+        "version" : "2.40.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "swordrpc",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/spotlightishere/SwordRPC",
+      "state" : {
+        "revision" : "342979e6db8a065ed1131ca0dc0a15712ffd4c0a",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 2
 }

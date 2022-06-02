@@ -45,7 +45,7 @@ class ViewController: NSViewController, SwordRPCDelegate {
         rpc.connect()
     }
     
-    func rpcDidConnect() {
+    func rpcDidConnect(_ _: SwordRPC) {
         log.notice("Connected to Discord RPC.")
 
         DispatchQueue.main.async {

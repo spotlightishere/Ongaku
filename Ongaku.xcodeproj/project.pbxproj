@@ -11,8 +11,8 @@
 		12F47207281D21D600609C94 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F47206281D21D600609C94 /* Player.swift */; };
 		12F47209281D227B00609C94 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F47208281D227B00609C94 /* PlayerState.swift */; };
 		12F4720B281D2B6000609C94 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4720A281D2B6000609C94 /* MusicPlayer.swift */; };
-		42024DE820145BFA00AEBA10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DE720145BFA00AEBA10 /* AppDelegate.swift */; };
-		42024DEA20145BFA00AEBA10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DE920145BFA00AEBA10 /* ViewController.swift */; };
+		42024DE820145BFA00AEBA10 /* Ongaku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DE720145BFA00AEBA10 /* Ongaku.swift */; };
+		42024DEA20145BFA00AEBA10 /* RPCController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DE920145BFA00AEBA10 /* RPCController.swift */; };
 		42024DEC20145BFA00AEBA10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42024DEB20145BFA00AEBA10 /* Assets.xcassets */; };
 		42024DEF20145BFA00AEBA10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42024DED20145BFA00AEBA10 /* Main.storyboard */; };
 		42024DFA20145BFA00AEBA10 /* OngakuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DF920145BFA00AEBA10 /* OngakuTests.swift */; };
@@ -55,8 +55,8 @@
 		12F47208281D227B00609C94 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 		12F4720A281D2B6000609C94 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		42024DE420145BFA00AEBA10 /* Ongaku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ongaku.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		42024DE720145BFA00AEBA10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		42024DE920145BFA00AEBA10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		42024DE720145BFA00AEBA10 /* Ongaku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ongaku.swift; sourceTree = "<group>"; };
+		42024DE920145BFA00AEBA10 /* RPCController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCController.swift; sourceTree = "<group>"; };
 		42024DEB20145BFA00AEBA10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42024DEE20145BFA00AEBA10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42024DF020145BFA00AEBA10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -133,8 +133,8 @@
 			children = (
 				12F47203281D202700609C94 /* Player */,
 				42E0BC98242929B10041F1C4 /* Ongaku.entitlements */,
-				42024DE720145BFA00AEBA10 /* AppDelegate.swift */,
-				42024DE920145BFA00AEBA10 /* ViewController.swift */,
+				42024DE720145BFA00AEBA10 /* Ongaku.swift */,
+				42024DE920145BFA00AEBA10 /* RPCController.swift */,
 				42024DEB20145BFA00AEBA10 /* Assets.xcassets */,
 				42024DED20145BFA00AEBA10 /* Main.storyboard */,
 				42024DF020145BFA00AEBA10 /* Info.plist */,
@@ -308,8 +308,8 @@
 				12F47209281D227B00609C94 /* PlayerState.swift in Sources */,
 				12F47207281D21D600609C94 /* Player.swift in Sources */,
 				12F4720B281D2B6000609C94 /* MusicPlayer.swift in Sources */,
-				42024DEA20145BFA00AEBA10 /* ViewController.swift in Sources */,
-				42024DE820145BFA00AEBA10 /* AppDelegate.swift in Sources */,
+				42024DEA20145BFA00AEBA10 /* RPCController.swift in Sources */,
+				42024DE820145BFA00AEBA10 /* Ongaku.swift in Sources */,
 				12F47205281D214A00609C94 /* Track.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

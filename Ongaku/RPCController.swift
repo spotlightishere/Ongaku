@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RPCController.swift
 //  Ongaku
 //
 //  Created by Spotlight Deveaux on 1/20/18.
@@ -14,7 +14,7 @@ import os.log
 
 fileprivate let log: Logger = Logger(subsystem: "io.github.spotlightishere.Ongaku", category: "view-controller")
 
-class ViewController: NSViewController, SwordRPCDelegate {
+class RPCController: SwordRPCDelegate {
     // This is the Ongaku app ID.
     // You're welcome to change as you want.
     let rpc = SwordRPC(appId: "402370117901484042")
@@ -24,9 +24,7 @@ class ViewController: NSViewController, SwordRPCDelegate {
     var player: Player!
     var playerSink: AnyCancellable?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    init() {
         do {
             player = try MusicPlayer()
         } catch {
@@ -47,11 +45,6 @@ class ViewController: NSViewController, SwordRPCDelegate {
     
     func rpcDidConnect(_ _: SwordRPC) {
         log.notice("Connected to Discord RPC.")
-
-        DispatchQueue.main.async {
-            // Bye window :)
-            self.view.window?.close()
-        }
 
         // Populate information initially.
         // We cannot obtain a store URL initially.

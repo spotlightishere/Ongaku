@@ -6,8 +6,8 @@
 //  Copyright © 2022 Spotlight Deveaux. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 protocol Player {
     /// A Combine subject that publishes the current player state.

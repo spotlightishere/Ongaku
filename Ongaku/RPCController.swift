@@ -9,10 +9,10 @@
 import Cocoa
 import Combine
 import Foundation
-import SwordRPC
 import os.log
+import SwordRPC
 
-fileprivate let log: Logger = Logger(subsystem: "io.github.spotlightishere.Ongaku", category: "view-controller")
+private let log: Logger = .init(subsystem: "io.github.spotlightishere.Ongaku", category: "view-controller")
 
 class RPCController: SwordRPCDelegate {
     // This is the Ongaku app ID.
@@ -42,7 +42,7 @@ class RPCController: SwordRPCDelegate {
 
         rpc.connect()
     }
-    
+
     func rpcDidConnect(_ _: SwordRPC) {
         log.notice("Connected to Discord RPC.")
 
@@ -109,9 +109,9 @@ class RPCController: SwordRPCDelegate {
 
         // If the player is active (i.e. has a track and position), then update
         // the rich presence accordingly.
-        case .playing(let active):
+        case let .playing(active):
             await updateActive(active, paused: false)
-        case .paused(let active):
+        case let .paused(active):
             await updateActive(active, paused: true)
         }
 

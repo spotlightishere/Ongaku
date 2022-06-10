@@ -6,11 +6,11 @@
 //  Copyright © 2022 Spotlight Deveaux. All rights reserved.
 //
 
-import Foundation
 import Combine
-import ScriptingBridge
-import os.log
+import Foundation
 import MusicKit
+import os.log
+import ScriptingBridge
 
 // Adapted from:
 // https://gist.github.com/pvieito/3aee709b97602bfc44961df575e2b696
@@ -35,18 +35,19 @@ import MusicKit
     @objc optional var playerPosition: CDouble { get }
 }
 
-fileprivate let musicBundleId = "com.apple.Music"
+private let musicBundleId = "com.apple.Music"
 
 enum MusicPlayerError: Error {
     case scriptingBridgeFailure
 }
 
-fileprivate var log: Logger = Logger(subsystem: "io.github.spotlightishere.Ongaku", category: "music-player")
+private var log: Logger = .init(subsystem: "io.github.spotlightishere.Ongaku", category: "music-player")
 
-fileprivate func fetchPlayerState() throws -> PlayerState {
+private func fetchPlayerState() throws -> PlayerState {
     guard let music: AnyObject = SBApplication(bundleIdentifier: musicBundleId),
           let playerState = music.playerState,
-          let track = music.currentTrack else {
+          let track = music.currentTrack
+    else {
         throw MusicPlayerError.scriptingBridgeFailure
     }
 
@@ -58,7 +59,8 @@ fileprivate func fetchPlayerState() throws -> PlayerState {
           let album = track.album,
           let name = track.name,
           let durationSeconds = track.duration,
-          let positionSeconds = music.playerPosition else {
+          let positionSeconds = music.playerPosition
+    else {
         throw MusicPlayerError.scriptingBridgeFailure
     }
 
@@ -74,7 +76,6 @@ fileprivate func fetchPlayerState() throws -> PlayerState {
     let active = PlayerState.Active(track: ongakuTrack, position: positionSeconds)
     return playerState == .iTunesEPlSPaused ? .paused(active) : .playing(active)
 }
-
 
 class MusicPlayer: Player {
     var state: CurrentValueSubject<PlayerState, Never>
@@ -106,10 +107,10 @@ class MusicPlayer: Player {
                 // accessible through the scripting bridge, unfortunately.
                 //
                 // Also, we need to copy stuff around because they're structs.
-                if case .playing(var active) = playerState {
+                if case var .playing(active) = playerState {
                     active.track.url = storeUrl()
                     playerState = .playing(PlayerState.Active(track: active.track, position: active.position))
-                } else if case .paused(var active) = playerState {
+                } else if case var .paused(active) = playerState {
                     active.track.url = storeUrl()
                     playerState = .paused(PlayerState.Active(track: active.track, position: active.position))
                 }
@@ -140,7 +141,8 @@ class MusicPlayer: Player {
 
         // We obtain query items and search for "i".
         guard let queryParam = components.queryItems?.filter({ $0.name == "i" }).first,
-              let queryId = queryParam.value else {
+              let queryId = queryParam.value
+        else {
             return nil
         }
 
@@ -156,7 +158,8 @@ class MusicPlayer: Player {
         }
 
         guard let song = response.items.first,
-              let artwork = song.artwork?.url(width: 512, height: 512) else {
+              let artwork = song.artwork?.url(width: 512, height: 512)
+        else {
             return nil
         }
         return artwork

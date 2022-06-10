@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct Ongaku: App {
     let manager = RPCController()
-    
+
     var body: some Scene {
         // Designed to match the style of the default
         // Storyboard-based menu items.
@@ -19,9 +19,9 @@ struct Ongaku: App {
             Button("About Ongaku") {
                 NSApplication.shared.orderFrontStandardAboutPanel()
             }
-            
+
             Divider()
-            
+
             Button("Quit Ongaku") {
                 NSApplication.shared.terminate(nil)
             }.keyboardShortcut("q", modifiers: [.command])

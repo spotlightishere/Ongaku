@@ -14,7 +14,6 @@
 		42024DE820145BFA00AEBA10 /* Ongaku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DE720145BFA00AEBA10 /* Ongaku.swift */; };
 		42024DEA20145BFA00AEBA10 /* RPCController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DE920145BFA00AEBA10 /* RPCController.swift */; };
 		42024DEC20145BFA00AEBA10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42024DEB20145BFA00AEBA10 /* Assets.xcassets */; };
-		42024DEF20145BFA00AEBA10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42024DED20145BFA00AEBA10 /* Main.storyboard */; };
 		42024DFA20145BFA00AEBA10 /* OngakuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DF920145BFA00AEBA10 /* OngakuTests.swift */; };
 		42024E0520145BFA00AEBA10 /* OngakuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024E0420145BFA00AEBA10 /* OngakuUITests.swift */; };
 		42E0BC97242925AB0041F1C4 /* SwordRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 42E0BC96242925AB0041F1C4 /* SwordRPC */; };
@@ -58,7 +57,6 @@
 		42024DE720145BFA00AEBA10 /* Ongaku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ongaku.swift; sourceTree = "<group>"; };
 		42024DE920145BFA00AEBA10 /* RPCController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCController.swift; sourceTree = "<group>"; };
 		42024DEB20145BFA00AEBA10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		42024DEE20145BFA00AEBA10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42024DF020145BFA00AEBA10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42024DF520145BFA00AEBA10 /* OngakuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OngakuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42024DF920145BFA00AEBA10 /* OngakuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngakuTests.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				42024DE720145BFA00AEBA10 /* Ongaku.swift */,
 				42024DE920145BFA00AEBA10 /* RPCController.swift */,
 				42024DEB20145BFA00AEBA10 /* Assets.xcassets */,
-				42024DED20145BFA00AEBA10 /* Main.storyboard */,
 				42024DF020145BFA00AEBA10 /* Info.plist */,
 			);
 			path = Ongaku;
@@ -280,7 +277,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				42024DEC20145BFA00AEBA10 /* Assets.xcassets in Resources */,
-				42024DEF20145BFA00AEBA10 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,17 +340,6 @@
 			targetProxy = 42024E0120145BFA00AEBA10 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		42024DED20145BFA00AEBA10 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				42024DEE20145BFA00AEBA10 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		42024E0720145BFA00AEBA10 /* Debug */ = {

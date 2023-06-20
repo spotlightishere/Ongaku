@@ -95,24 +95,23 @@ class MusicPlayer: Player {
                     return
                 }
 
-                func storeUrl() -> String? {
-                    let storeUrl = notification.userInfo?["Store URL"] as? String
-                    log.info("Current track's store URL: \(storeUrl ?? "<unknown>")")
-                    return storeUrl
-                }
-
-                // The store URL of the active track is (ostensibly) only
+                // The store URL of the active track is apparently only
                 // available in DistributedNotificationCenter notifications, so
                 // we must inject the store URL here. It doesn't seem to be
                 // accessible through the scripting bridge, unfortunately.
-                //
-                // Also, we need to copy stuff around because they're structs.
-                if case var .playing(active) = playerState {
-                    active.track.url = storeUrl()
-                    playerState = .playing(PlayerState.Active(track: active.track, position: active.position))
-                } else if case var .paused(active) = playerState {
-                    active.track.url = storeUrl()
-                    playerState = .paused(PlayerState.Active(track: active.track, position: active.position))
+                switch playerState {
+                case .playing(let active), .paused(let active):
+                    let storeUrl = notification.userInfo?["Store URL"] as? String
+                    log.info("Current track's store URL: \(storeUrl ?? "<unknown>")")
+
+                    // Copy the track, modifying its URL.
+                    var track = active.track
+                    track.url = storeUrl
+
+                    let newActive = PlayerState.Active(track: track, position: active.position)
+                    playerState = playerState.isPlaying ? .playing(newActive) : .paused(newActive)
+                default:
+                    break
                 }
 
                 log.info("Sending a new player state: \(String(describing: playerState))")

@@ -22,6 +22,11 @@ class ScrobblerController: ObservableObject {
 	@Published var enabled: Bool = true
 	
 	private var authToken: String?
+    // How many times we've tried to create a session with the current authToken
+    private var authTokenAttempts: Int = 0
+    // Maximum number of authentication attempts
+    private let authTokenMaxAttempts: Int = 5
+    
 	@Published var session: LastFMSession?
 	private var latestScrobbledTrack: ScrobbleData?
 	
@@ -203,6 +208,7 @@ class ScrobblerController: ObservableObject {
 		}
 	}
 	
+    // Fetch and save a session, requesting user auth if necessary.
 	func fetchAndSaveSession() async {
 		if loadSessionFromKeychain() {
 			return
@@ -239,21 +245,33 @@ class ScrobblerController: ObservableObject {
 				}
 			}
 		} catch {
-			log.error("Failed to fetch Last.fm session, retrying later: \(error)")
+            log.error("Failed to fetch Last.fm session, \(self.authTokenAttempts)/\(self.authTokenMaxAttempts) attempts: \(error)")
 		}
 	}
 	
+    // Fetches an auth session
 	private func fetchSession() async throws -> LastFMSession? {
 		if let token = authToken {
+            authTokenAttempts += 1
 			let url = buildUrl(method: "auth.getSession", extraQueryItems: [URLQueryItem(name: "token", value: token)])!
 			
 			struct Response: Codable {
 				let session: LastFMSession
 			}
 			
-			let value = try await AF.request(url, headers: [.accept("application/json")]).validate().serializingDecodable(Response.self).value
-			log.debug("Got Last.fm session for \(value.session.name).")
-			return value.session
+            do {
+                let value = try await AF.request(url, headers: [.accept("application/json")]).validate().serializingDecodable(Response.self).value
+                log.debug("Got Last.fm session for \(value.session.name).")
+                return value.session
+            } catch {
+                if authTokenAttempts >= authTokenMaxAttempts {
+                    log.info("Maximum authentication attempts reached, resetting auth token.")
+                    authToken = nil
+                    authTokenAttempts = 0
+                }
+                
+                throw error
+            }
 		}
 		
 		return nil

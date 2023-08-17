@@ -21,17 +21,11 @@ class RPCController: SwordRPCDelegate {
 
     var assetName = "big_sur_logo"
 
-    var player: Player!
+    var player: Player
     var playerSink: AnyCancellable?
 
-    init() {
-        do {
-            player = try MusicPlayer()
-        } catch {
-            log.error("Failed to construct MusicPlayer: \(error.localizedDescription)")
-            fatalError("Can't start -- failed to create MusicPlayer. \(error)")
-        }
-
+	init(player: Player) {
+		self.player = player
         rpc.delegate = self
 
         playerSink = player.state.sink { state in

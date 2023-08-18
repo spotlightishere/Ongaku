@@ -14,3 +14,12 @@ struct ScrobbleData: Codable, Equatable {
 	let album: String?
 	let duration: Int?
 }
+
+extension ScrobbleData {
+    var dict: [String: String?] {
+        get {
+            let durationStr: String? = if let duration { String(duration) } else { nil }
+            return ["artist": artist, "track": track, "album": album, "duration": durationStr]
+        }
+    }
+}

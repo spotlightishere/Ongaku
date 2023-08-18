@@ -9,6 +9,6 @@ Download from the Releases tab, or build yourself!
 Please run [swiftformat](https://github.com/nicklockwood/SwiftFormat) on your code - this helps maintain a consistent coding style throughout everyone working on the repository!
 
 ### Credits
-[Jack Dorland](https://github.com/jackdorland) for the name and wonderful app icon.
-[Skip R.](https://github.com/slice) for great help with cleaning up and modernizing the codebase.
-[Kot C.](https://github.com/kotx) for contributing Last.fm integration.
+ - [Jack Dorland](https://github.com/jackdorland) for the name and wonderful app icon.
+ - [Skip R.](https://github.com/slice) for great help with cleaning up and modernizing the codebase.
+ - [Kot C.](https://github.com/kotx) for contributing Last.fm integration.

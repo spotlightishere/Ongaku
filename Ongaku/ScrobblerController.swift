@@ -90,22 +90,13 @@ class ScrobblerController: ObservableObject {
 
         params["api_sig"] = signAPIMethod(params: params)
 
-//        let encoder: ParameterEncoder = switch httpMethod {
-//        case .post: JSONParameterEncoder.sortedKeys;
-//        default: URLEncodedFormParameterEncoder(destination: .queryString);
-//        }
-
         var builder = URLComponents()
         builder.queryItems = params.map { param in
             URLQueryItem(name: param.key, value: param.value)
         }
 
         let url = builder.url(relativeTo: baseUrl)!
-        var headers: HTTPHeaders = [.accept("application/json")]
-//        if httpMethod == .post {
-//            headers.add(.contentType("application/json"))
-//        }
-
+        let headers: HTTPHeaders = [.accept("application/json")]
         let req = AF.request(url, method: httpMethod, headers: headers)
             .validate()
             .responseData { data in
@@ -172,7 +163,7 @@ class ScrobblerController: ObservableObject {
             do {
                 session = try JSONDecoder().decode(LastFMSession.self, from: sessionKeychain.data(using: .utf8)!)
                 if session != nil {
-                    log.debug("Got Last.fm session for \(session!.name) from keychain")
+                    log.debug("Got Last.fm session for \(self.session!.name) from keychain")
                     return true
                 }
             } catch {
@@ -232,7 +223,7 @@ class ScrobblerController: ObservableObject {
                 }
             }
         } catch {
-            log.error("Failed to fetch Last.fm session, \(authTokenAttempts)/\(authTokenMaxAttempts) attempts: \(error)")
+            log.error("Failed to fetch Last.fm session, \(self.authTokenAttempts)/\(self.authTokenMaxAttempts) attempts: \(error)")
         }
     }
 

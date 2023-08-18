@@ -6,9 +6,9 @@
 //  Copyright © 2018 Spotlight Deveaux. All rights reserved.
 //
 
-import SwiftUI
 import Combine
 import os.log
+import SwiftUI
 
 private let log: Logger = .init(subsystem: "io.github.spotlightishere.Ongaku", category: "main-app")
 

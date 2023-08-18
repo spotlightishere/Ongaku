@@ -24,8 +24,8 @@ class RPCController: SwordRPCDelegate {
     var player: Player
     var playerSink: AnyCancellable?
 
-	init(player: Player) {
-		self.player = player
+    init(player: Player) {
+        self.player = player
         rpc.delegate = self
 
         playerSink = player.state.sink { state in

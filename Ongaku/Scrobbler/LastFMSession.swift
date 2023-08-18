@@ -9,6 +9,6 @@
 import Foundation
 
 struct LastFMSession: Codable {
-	let name: String
-	let key: String
+    let name: String
+    let key: String
 }

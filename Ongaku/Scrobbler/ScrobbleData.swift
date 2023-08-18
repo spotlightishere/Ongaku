@@ -9,17 +9,15 @@
 import Foundation
 
 struct ScrobbleData: Codable, Equatable {
-	let artist: String
-	let track: String
-	let album: String?
-	let duration: Int?
+    let artist: String
+    let track: String
+    let album: String?
+    let duration: Int?
 }
 
 extension ScrobbleData {
     var dict: [String: String?] {
-        get {
-            let durationStr: String? = if let duration { String(duration) } else { nil }
-            return ["artist": artist, "track": track, "album": album, "duration": durationStr]
-        }
+        let durationStr: String? = if let duration { String(duration) } else { nil }
+        return ["artist": artist, "track": track, "album": album, "duration": durationStr]
     }
 }

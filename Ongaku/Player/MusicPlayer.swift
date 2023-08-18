@@ -85,7 +85,7 @@ class MusicPlayer: Player {
     init() throws {
         let name: NSNotification.Name = .init(rawValue: "\(musicBundleId).playerInfo")
 
-        state = CurrentValueSubject(try fetchPlayerState())
+        state = try CurrentValueSubject(fetchPlayerState())
         sink = DistributedNotificationCenter.default.publisher(for: name)
             .sink { [weak self] notification in
                 guard let self = self else { return }
@@ -100,7 +100,7 @@ class MusicPlayer: Player {
                 // we must inject the store URL here. It doesn't seem to be
                 // accessible through the scripting bridge, unfortunately.
                 switch playerState {
-                case .playing(let active), .paused(let active):
+                case let .playing(active), let .paused(active):
                     let storeUrl = notification.userInfo?["Store URL"] as? String
                     log.info("Current track's store URL: \(storeUrl ?? "<unknown>")")
 

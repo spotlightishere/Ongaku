@@ -31,8 +31,8 @@ class ScrobblerController: ObservableObject {
 	private var latestScrobbledTrack: ScrobbleData?
 	
 	// What you gonna do, scrobble me to death?
-	let baseUrl = URL(string: "https://ws.audioscrobbler.com/2.0")
-	let authUrl = URL(string: "https://last.fm/api/auth")
+    let baseUrl = URL(string: "https://ws.audioscrobbler.com/2.0")!
+	let authUrl = URL(string: "https://last.fm/api/auth")!
 	private let apiKey = "50ad35bfe1bb89b96f0c6e23c724dd5e"
 	private let sharedSecret = "d2673496334bffaf9d5a1fac6bd29887"
 	
@@ -60,7 +60,7 @@ class ScrobblerController: ObservableObject {
 			switch state {
 			case .playing(let active):
 				let data = ScrobbleData(artist: active.track.artist ?? "Unknown Artist", track: active.track.title, album: active.track.album, duration: Int(active.track.duration))
-				updateNowPlaying(data: data)
+				sendNowPlaying(data: data)
 				
 				// Don't scrobble this track if it's the latest scrobbled track
 				let isLastScrobbled = data == latestScrobbledTrack
@@ -76,23 +76,60 @@ class ScrobblerController: ObservableObject {
 			}
 		}
 	}
+    
+    private func sendRequest(method: String, extraParams: [String: String] = [:], httpMethod: HTTPMethod) -> DataRequest {
+        var params: [String: String] = [
+            "method": method,
+            "api_key": apiKey,
+            "format": "json"
+        ]
+        
+        params.merge(extraParams) { _, new in
+            return new
+        }
+        
+        params["api_sig"] = signAPIMethod(params: params)
+        
+//        let encoder: ParameterEncoder = switch httpMethod {
+//        case .post: JSONParameterEncoder.sortedKeys;
+//        default: URLEncodedFormParameterEncoder(destination: .queryString);
+//        }
+        
+        var builder = URLComponents()
+        builder.queryItems = params.map { param in
+            URLQueryItem(name: param.key, value: param.value)
+        }
+    
+        let url = builder.url(relativeTo: baseUrl)!
+        var headers: HTTPHeaders = [.accept("application/json")]
+//        if httpMethod == .post {
+//            headers.add(.contentType("application/json"))
+//        }
+        
+        let req = AF.request(url, method: httpMethod, headers: headers)
+            .validate()
+            .responseData { data in
+                if let statusCode = data.response?.statusCode {
+                    if statusCode == 401 {
+                        log.debug("Received 401 status code from Last.fm, resetting session.")
+                        do {
+                            try self.clearSession()
+                        } catch {
+                            log.info("Error clearing Last.fm session: \(error)")
+                        }
+                    }
+                }
+            }
+        return req
+    }
 	
-	func updateNowPlaying(data: ScrobbleData) {
+	func sendNowPlaying(data: ScrobbleData) {
 		if let session {
 			let key = session.key
-			let durationStr = if let duration = data.duration { String(duration) } else { "" }
-			
-			// TODO: maybe move to ScrobbleData class? and use json post body
-			let url = buildUrl(method: "track.updateNowPlaying", extraQueryItems: [
-				URLQueryItem(name: "artist", value: data.artist),
-				URLQueryItem(name: "track", value: data.track),
-				URLQueryItem(name: "album", value: data.album),
-				URLQueryItem(name: "duration", value: durationStr),
-				URLQueryItem(name: "sk", value: key)
-			])!
-			
-			// TODO: use post body for above params
-			AF.request(url, method: .post, headers: [.accept("application/json")]).validate().responseData { resp in
+            var dict = data.dict.compactMapValues { $0 }
+            dict["sk"] = key
+            
+            sendRequest(method: "track.updateNowPlaying", extraParams: dict, httpMethod: .post).responseData { resp in
 				switch resp.result {
 				case .success:
 					log.debug("Sent Last.fm Now Playing for \(data.artist) - \(data.track)")
@@ -106,18 +143,11 @@ class ScrobblerController: ObservableObject {
 	func sendScrobble(data: ScrobbleData, timestamp: Int) {
 		if let session {
 			let key = session.key
-			let durationStr = if let duration = data.duration { String(duration) } else { "" }
-			
-			let url = buildUrl(method: "track.updateNowPlaying", extraQueryItems: [
-				URLQueryItem(name: "artist", value: data.artist),
-				URLQueryItem(name: "track", value: data.track),
-				URLQueryItem(name: "album", value: data.album),
-				URLQueryItem(name: "duration", value: durationStr),
-				URLQueryItem(name: "sk", value: key)
-			])!
-			
-			// TODO: use post body for above params
-			AF.request(url, method: .post, headers: [.accept("application/json")]).validate().responseData { resp in
+            var dict = data.dict.compactMapValues { $0 }
+            dict["sk"] = key
+            dict["timestamp"] = String(timestamp)
+            
+            sendRequest(method: "track.scrobble", extraParams: dict, httpMethod: .post).responseData { resp in
 				switch resp.result {
 				case .success:
 					log.debug("Sent Last.fm scrobble for \(data.artist) - \(data.track)")
@@ -127,49 +157,6 @@ class ScrobblerController: ObservableObject {
 				}
 			}
 		}
-	}
-	
-	private func updateStatus(method: String, artist: String, track: String, album: String?, duration: TimeInterval?, timestamp: NSDate? = nil) {
-		if let session {
-			let key = session.key
-			let durationStr = if let duration { String(Int(duration.rounded())) } else { "" }
-			
-			let url = buildUrl(method: method, extraQueryItems: [
-				URLQueryItem(name: "artist", value: artist),
-				URLQueryItem(name: "track", value: track),
-				URLQueryItem(name: "album", value: album),
-				URLQueryItem(name: "duration", value: durationStr),
-				URLQueryItem(name: "sk", value: key)
-			])!
-			
-			// TODO: use post body for above params
-			AF.request(url, method: .post, headers: [.accept("application/json")]).validate().responseData { resp in
-				switch resp.result {
-				case .success:
-					log.debug("Sent Last.fm Now Playing for \(artist) - \(track)")
-				case let .failure(error):
-					log.error("Error updating Last.fm Now Playing: \(error)")
-				}
-			}
-		}
-	}
-	
-	private func buildUrl(method: String, extraQueryItems: [URLQueryItem] = []) -> URL? {
-		var builder = URLComponents()
-		builder.queryItems = [
-			URLQueryItem(name: "method", value: method),
-			URLQueryItem(name: "api_key", value: apiKey),
-		]
-		
-		builder.queryItems?.append(contentsOf: extraQueryItems)
-		
-		let sig = URLQueryItem(name: "api_sig", value: signAPIMethod(queryItems: builder.queryItems!))
-		builder.queryItems?.append(sig)
-		
-		// Format isn't included in the signature, add it last
-		builder.queryItems?.append(URLQueryItem(name: "format", value: "json"))
-		
-		return builder.url(relativeTo: baseUrl)
 	}
 	
 	private func getKeychain() -> Keychain {
@@ -253,14 +240,14 @@ class ScrobblerController: ObservableObject {
 	private func fetchSession() async throws -> LastFMSession? {
 		if let token = authToken {
             authTokenAttempts += 1
-			let url = buildUrl(method: "auth.getSession", extraQueryItems: [URLQueryItem(name: "token", value: token)])!
 			
 			struct Response: Codable {
 				let session: LastFMSession
 			}
 			
             do {
-                let value = try await AF.request(url, headers: [.accept("application/json")]).validate().serializingDecodable(Response.self).value
+                let req = sendRequest(method: "auth.getSession", extraParams: ["token": token], httpMethod: .get)
+                let value = try await req.serializingDecodable(Response.self).value
                 log.debug("Got Last.fm session for \(value.session.name).")
                 return value.session
             } catch {
@@ -278,15 +265,14 @@ class ScrobblerController: ObservableObject {
 	}
 	
     private func getAuthToken() async {
-        let url = buildUrl(method: "auth.getToken")!
-        
         struct Response: Codable {
             let token: String
         }
         
         authToken = nil
         do {
-            let value = try await AF.request(url, headers: [.accept("application/json")]).validate().serializingDecodable(Response.self).value
+            let req = sendRequest(method: "auth.getToken", httpMethod: .get)
+            let value = try await req.serializingDecodable(Response.self).value
             authToken = value.token
         } catch {
             log.error("Failed to fetch Last.fm request token: \(error)")
@@ -307,16 +293,20 @@ class ScrobblerController: ObservableObject {
 		}
 	}
 	
-	private func signAPIMethod(queryItems: [URLQueryItem]) -> String {
-		let sorted = queryItems.sorted(by: { a, b in
-			return b.name > a.name
+    private func signAPIMethod(params: Dictionary<String, String>) -> String {
+        let filtered = params.filter({ param in
+            return param.key != "format" // Format param isn't included in the signature
+        })
+        
+		let sorted = filtered.sorted(by: { a, b in
+            return b.key > a.key
 		})
 		
-		let params = sorted.reduce("", { result, item in
-			return result + item.name + (item.value ?? "")
+        let paramStr = sorted.reduce("", { result, item in
+			return result + item.key + item.value
 		}) + sharedSecret
 		
-		let digest = Insecure.MD5.hash(data: params.data(using: .utf8)!)
+		let digest = Insecure.MD5.hash(data: paramStr.data(using: .utf8)!)
 		return digest.map {
 			String(format: "%02hhx", $0)
 		}.joined()

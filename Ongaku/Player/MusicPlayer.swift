@@ -88,7 +88,7 @@ class MusicPlayer: Player {
         state = try CurrentValueSubject(fetchPlayerState())
         sink = DistributedNotificationCenter.default.publisher(for: name)
             .sink { [weak self] notification in
-                guard let self = self else { return }
+                guard let self else { return }
 
                 guard var playerState = try? fetchPlayerState() else {
                     log.error("Failed to fetch player state upon receiving a notification, not sending a new player state.")
@@ -115,7 +115,7 @@ class MusicPlayer: Player {
                 }
 
                 log.info("Sending a new player state: \(String(describing: playerState))")
-                self.state.send(playerState)
+                state.send(playerState)
             }
     }
 
@@ -165,7 +165,7 @@ class MusicPlayer: Player {
     }
 
     deinit {
-        if let sink = sink {
+        if let sink {
             sink.cancel()
         }
     }

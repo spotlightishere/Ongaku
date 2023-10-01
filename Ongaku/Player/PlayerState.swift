@@ -29,8 +29,8 @@ extension PlayerState {
     /// Returns whether the player is actively playing a track.
     var isPlaying: Bool {
         switch self {
-        case .playing: return true
-        default: return false
+        case .playing: true
+        default: false
         }
     }
 

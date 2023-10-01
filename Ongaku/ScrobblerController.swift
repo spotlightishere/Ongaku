@@ -48,7 +48,7 @@ class ScrobblerController: ObservableObject {
     }
 
     func updateScrobbler(playerState state: PlayerState) async {
-        if session == nil && authToken != nil {
+        if session == nil, authToken != nil {
             log.debug("Attempting to authorize Last.fm session")
             await fetchAndSaveSession()
         } else {
@@ -151,29 +151,28 @@ class ScrobblerController: ObservableObject {
     }
 
     private func getKeychain() -> Keychain {
-        return Keychain(service: "io.github.spotlightishere.Ongaku.lastfm")
+        Keychain(service: "io.github.spotlightishere.Ongaku.lastfm")
             .label("last.fm (Ongaku)")
             .accessibility(.afterFirstUnlock)
     }
 
     private func loadSessionFromKeychain() -> Bool {
         let keychain = getKeychain()
-        let sessionKeychain = keychain["session"]
-        if let sessionKeychain {
-            do {
-                session = try JSONDecoder().decode(LastFMSession.self, from: sessionKeychain.data(using: .utf8)!)
-                if session != nil {
-                    log.debug("Got Last.fm session for \(self.session!.name) from keychain")
-                    return true
-                }
-            } catch {
-                log.error("Error decoding Last.fm session from keychain: \(error)")
-                session = nil
-            }
-        } else {
+        guard let sessionKeychain = keychain["session"] else {
             log.debug("Last.fm session token not found on keychain.")
+            return false
         }
 
+        do {
+            session = try JSONDecoder().decode(LastFMSession.self, from: sessionKeychain.data(using: .utf8)!)
+            if session != nil {
+                log.debug("Got Last.fm session for \(self.session!.name) from keychain")
+                return true
+            }
+        } catch {
+            log.error("Error decoding Last.fm session from keychain: \(error)")
+            session = nil
+        }
         return false
     }
 

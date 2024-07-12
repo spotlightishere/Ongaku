@@ -27,7 +27,8 @@ struct Ongaku: App {
             fatalError("Can't start -- failed to create MusicPlayer. \(error)")
         }
 
-        rpc = RPCController(player: player)
+        let rpc = RPCController(player: player)
+        _rpc = StateObject(wrappedValue: rpc)
 
         let scrobbler = ScrobblerController(player: player)
         _scrobbler = StateObject(wrappedValue: scrobbler)
@@ -40,9 +41,8 @@ struct Ongaku: App {
 
     let player: Player
     var playerSink: AnyCancellable?
-    let rpc: RPCController
-    @State var discord: Bool = true
     @StateObject var scrobbler: ScrobblerController
+    @StateObject var rpc: RPCController
 
     var body: some Scene {
         // Designed to match the style of the default
@@ -59,13 +59,21 @@ struct Ongaku: App {
                 
                 HStack {
                     MenuCircleToggle(
-                        isOn: $discord,
+                        isOn: $rpc.enabled,
                         controlSize: .prominent,
                         style: .init(
                             image: Image("discord"),
                             color: blurple
                         )
-                    ) { Text("Discord") }
+                    ) { Text("Discord") } onClick: { toggle in
+                        if toggle {
+                            Task(priority: .userInitiated) {
+                                await rpc.updateRichPresence(playerState: rpc.player.state.value)
+                            }
+                        } else {
+                            rpc.rpc.clearPresence()
+                        }
+                    }
                     MenuCircleToggle(
                         isOn: $scrobbler.enabled,
                         controlSize: .prominent,

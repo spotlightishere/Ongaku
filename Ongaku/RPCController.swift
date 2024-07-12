@@ -14,7 +14,7 @@ import SwordRPC
 
 private let log: Logger = .init(subsystem: "io.github.spotlightishere.Ongaku", category: "view-controller")
 
-class RPCController: SwordRPCDelegate {
+class RPCController: SwordRPCDelegate, ObservableObject {
     // This is the Ongaku app ID.
     // You're welcome to change as you want.
     let rpc = SwordRPC(appId: "402370117901484042")
@@ -23,6 +23,7 @@ class RPCController: SwordRPCDelegate {
 
     var player: Player
     var playerSink: AnyCancellable?
+    @Published var enabled: Bool = true
 
     init(player: Player) {
         self.player = player
@@ -48,6 +49,8 @@ class RPCController: SwordRPCDelegate {
     }
 
     func updateRichPresence(playerState state: PlayerState) async {
+        if !enabled { return }
+        
         var presence = RichPresence()
 
         func updateActive(_ active: PlayerState.Active, paused: Bool = false) async {

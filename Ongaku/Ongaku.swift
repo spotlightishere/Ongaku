@@ -31,6 +31,11 @@ struct Ongaku: App {
 
         let scrobbler = ScrobblerController(player: player)
         _scrobbler = StateObject(wrappedValue: scrobbler)
+        if scrobbler.session != nil {
+            scrobbler.enabled = true
+        } else {
+            scrobbler.enabled = false
+        }
     }
 
     let player: Player
@@ -50,7 +55,7 @@ struct Ongaku: App {
                         .foregroundColor(.secondary)
                 }
                 
-                MenuSection("Presence")
+                MenuSection("Active")
                 
                 HStack {
                     MenuCircleToggle(
@@ -69,14 +74,22 @@ struct Ongaku: App {
                             color: lastFmColor
                         )
                     ) { Text("Last.fm") } onClick: { toggle in
-                        print(toggle)
+                        if scrobbler.session == nil {
+                            scrobbler.enabled = false
+                            Task(priority: .userInitiated) {
+                                await scrobbler.fetchAndSaveSession()
+                                scrobbler.enabled = true
+                            }
+                        }
                     }
                 }
                 .frame(height: 80)
                 
                 MenuDisclosureSection("Last.fm", initiallyExpanded: false) {
                     if let session = scrobbler.session {
-                        MenuCommand {} label: {
+                        MenuCommand {
+                            NSWorkspace.shared.open(URL(string: "https://www.last.fm/user/\(session.name)")!)
+                        } label: {
                             HStack {
                                 Image(systemName: "person.crop.circle.fill")
                                     .resizable()

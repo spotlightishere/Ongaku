@@ -17,6 +17,7 @@
 		42024DFA20145BFA00AEBA10 /* OngakuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024DF920145BFA00AEBA10 /* OngakuTests.swift */; };
 		42024E0520145BFA00AEBA10 /* OngakuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42024E0420145BFA00AEBA10 /* OngakuUITests.swift */; };
 		42E0BC97242925AB0041F1C4 /* SwordRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 42E0BC96242925AB0041F1C4 /* SwordRPC */; };
+		59453BE52C4090C2007E572F /* MacControlCenterUI in Frameworks */ = {isa = PBXBuildFile; productRef = 59453BE42C4090C2007E572F /* MacControlCenterUI */; };
 		877312ED2A8D79B700E4222E /* ScrobblerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877312EC2A8D79B700E4222E /* ScrobblerController.swift */; };
 		877312F42A8D910600E4222E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 877312F32A8D910600E4222E /* Alamofire */; };
 		87EB7A192A8D9BDA00F61B18 /* LastFMSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB7A182A8D9BDA00F61B18 /* LastFMSession.swift */; };
@@ -83,6 +84,7 @@
 				42E0BC97242925AB0041F1C4 /* SwordRPC in Frameworks */,
 				877312F42A8D910600E4222E /* Alamofire in Frameworks */,
 				87EB7A1C2A8DAE2000F61B18 /* KeychainAccess in Frameworks */,
+				59453BE52C4090C2007E572F /* MacControlCenterUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +201,7 @@
 				42E0BC96242925AB0041F1C4 /* SwordRPC */,
 				877312F32A8D910600E4222E /* Alamofire */,
 				87EB7A1B2A8DAE2000F61B18 /* KeychainAccess */,
+				59453BE42C4090C2007E572F /* MacControlCenterUI */,
 			);
 			productName = Ongaku;
 			productReference = 42024DE420145BFA00AEBA10 /* Ongaku.app */;
@@ -285,6 +288,7 @@
 				42E0BC95242925AB0041F1C4 /* XCRemoteSwiftPackageReference "SwordRPC" */,
 				877312F22A8D910600E4222E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				87EB7A1A2A8DAE2000F61B18 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				59453BE32C4090C2007E572F /* XCRemoteSwiftPackageReference "MacControlCenterUI" */,
 			);
 			productRefGroup = 42024DE520145BFA00AEBA10 /* Products */;
 			projectDirPath = "";
@@ -696,6 +700,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		59453BE32C4090C2007E572F /* XCRemoteSwiftPackageReference "MacControlCenterUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orchetect/MacControlCenterUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.8;
+			};
+		};
 		877312F22A8D910600E4222E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -719,6 +731,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 42E0BC95242925AB0041F1C4 /* XCRemoteSwiftPackageReference "SwordRPC" */;
 			productName = SwordRPC;
+		};
+		59453BE42C4090C2007E572F /* MacControlCenterUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59453BE32C4090C2007E572F /* XCRemoteSwiftPackageReference "MacControlCenterUI" */;
+			productName = MacControlCenterUI;
 		};
 		877312F32A8D910600E4222E /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

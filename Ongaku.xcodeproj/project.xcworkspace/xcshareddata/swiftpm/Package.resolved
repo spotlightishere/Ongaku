@@ -1,4 +1,5 @@
 {
+  "originHash" : "22d9e9f6e5b0b0baa9d34cac019b9964f7c93794c86062d81b63c1ef51a36823",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -16,6 +17,24 @@
       "state" : {
         "branch" : "master",
         "revision" : "ecb18d8ce4d88277cc4fb103973352d91e18c535"
+      }
+    },
+    {
+      "identity" : "maccontrolcenterui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/orchetect/MacControlCenterUI",
+      "state" : {
+        "revision" : "6565bcb33bfdb446a4fd81f3c78dce27b0ab7e09",
+        "version" : "2.0.8"
+      }
+    },
+    {
+      "identity" : "menubarextraaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/orchetect/MenuBarExtraAccess",
+      "state" : {
+        "revision" : "f5896b47e15e114975897354c7e1082c51a2bffd",
+        "version" : "1.0.5"
       }
     },
     {
@@ -55,5 +74,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

@@ -91,10 +91,10 @@ class MusicPlayer: Player {
                 guard let self else { return }
 
                 guard let userInfo = notification.userInfo else {
-                  // log
-                  return
+                    // log
+                    return
                 }
-                
+
                 // Music informs us that playback has stopped as it quits.
                 // If we attempt to query it via AppleScript, it will re-open.
                 // If applicable, trust its notification.
@@ -104,12 +104,11 @@ class MusicPlayer: Player {
                         return
                     }
                 }
-                
+
                 guard var playerState = try? fetchPlayerState() else {
                     log.error("Failed to fetch player state upon receiving a notification, not sending a new player state.")
                     return
                 }
-                
 
                 // The store URL of the active track is apparently only
                 // available in DistributedNotificationCenter notifications, so

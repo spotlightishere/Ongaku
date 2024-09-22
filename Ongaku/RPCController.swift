@@ -50,7 +50,7 @@ class RPCController: SwordRPCDelegate, ObservableObject {
 
     func updateRichPresence(playerState state: PlayerState) async {
         if !enabled { return }
-        
+
         var presence = RichPresence()
 
         func updateActive(_ active: PlayerState.Active, paused: Bool = false) async {
@@ -109,6 +109,7 @@ class RPCController: SwordRPCDelegate, ObservableObject {
         // the rich presence accordingly.
         case let .playing(active):
             await updateActive(active, paused: false)
+
         case let .paused(active):
             await updateActive(active, paused: true)
         }

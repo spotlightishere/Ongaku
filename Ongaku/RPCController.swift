@@ -57,6 +57,7 @@ class RPCController: SwordRPCDelegate, ObservableObject {
             log.info("Player is active, populating rich presence state accordingly")
 
             let track = active.track
+            presence.type = .listening
             presence.details = track.title
             presence.state = "\(track.artist ?? "Unknown") \u{2014} \(track.album ?? "Unknown")"
 

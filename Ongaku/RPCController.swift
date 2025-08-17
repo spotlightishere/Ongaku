@@ -59,10 +59,11 @@ class RPCController: SwordRPCDelegate, ObservableObject {
             let track = active.track
             presence.type = .listening
             presence.details = track.title
-            presence.state = "\(track.artist ?? "Unknown") \u{2014} \(track.album ?? "Unknown")"
+            presence.state = track.artist ?? "Unknown"
+            presence.statusDisplayType = .details
 
             presence.assets.largeImage = assetName
-            presence.assets.largeText = track.title
+            presence.assets.largeText = track.album ?? "Unknown album"
             presence.assets.smallImage = paused ? "pause" : "play"
             presence.assets.smallText = paused ? "Paused" : "Playing"
 

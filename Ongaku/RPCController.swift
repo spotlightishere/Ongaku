@@ -52,12 +52,12 @@ class RPCController: SwordRPCDelegate, ObservableObject {
         if !enabled { return }
 
         var presence = RichPresence()
+        presence.type = .listening
 
         func updateActive(_ active: PlayerState.Active, paused: Bool = false) async {
             log.info("Player is active, populating rich presence state accordingly")
 
             let track = active.track
-            presence.type = .listening
             presence.details = track.title
             presence.state = track.artist ?? "Unknown"
             presence.statusDisplayType = .details

@@ -15,4 +15,10 @@ protocol Player {
 
     /// Fetches a URL to the artwork of a track.
     func fetchArtwork(forTrack track: Track) async throws -> URL?
+    
+    /// The URL of this track on the website.
+    var webUrl: URL? { get }
+    
+    /// The artist's website URL.
+    var artistUrl: URL? { get }
 }

@@ -79,6 +79,8 @@ private func fetchPlayerState() throws -> PlayerState {
 
 class MusicPlayer: Player {
     var state: CurrentValueSubject<PlayerState, Never>
+    var webUrl: URL?
+    var artistUrl: URL?
 
     fileprivate var sink: AnyCancellable?
 
@@ -176,6 +178,9 @@ class MusicPlayer: Player {
         else {
             return nil
         }
+        self.webUrl = song.url
+        self.artistUrl = song.artistURL
+        // If we could iterate song.artists and link multiple artists like Spotify does...
         return artwork
     }
 

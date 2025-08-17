@@ -72,6 +72,8 @@ class RPCController: SwordRPCDelegate, ObservableObject {
                 do {
                     if let artworkUrl = try await player.fetchArtwork(forTrack: track) {
                         presence.assets.largeImage = artworkUrl.absoluteString
+                        presence.detailsUrl = player.webUrl?.absoluteString
+                        presence.stateUrl = player.artistUrl?.absoluteString
                     }
                 } catch {
                     log.error("Failed to obtain artwork for track \(String(describing: track)): \(String(describing: error))")

@@ -696,8 +696,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/spotlightishere/SwordRPC";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		59453BE32C4090C2007E572F /* XCRemoteSwiftPackageReference "MacControlCenterUI" */ = {
